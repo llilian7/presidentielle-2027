@@ -335,6 +335,95 @@ details.adv[open]>summary{margin-bottom:12px}
   .detail{padding:14px 14px 16px}
 }
 @media (max-width:370px){.countdown{display:none}.tabs a{padding:7px 8px}}
+
+/* ===== Comparer des candidats (22 novembre 2026) ===== */
+.cmp-pick{display:grid;gap:10px}
+.cmp-pick .chips{display:flex;flex-wrap:wrap;gap:6px}
+details.cmp-sel>summary{list-style:none;width:fit-content}
+details.cmp-sel>summary::-webkit-details-marker{display:none}
+details.cmp-sel>summary::after{content:"▾";margin-left:4px}
+details.cmp-sel[open]>summary::after{content:"▴"}
+.cmp-pick .chip{cursor:pointer;font:inherit;font-size:.86rem;color:var(--ink)}
+.cmp-pick .chip.on{color:var(--accent-ink)}
+.cmp-pick .chip.on::before{content:"✓ "}
+.cmp-tnav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.cmp-tnav::-webkit-scrollbar{display:none}
+.cmp-tnav .chip.off{color:var(--muted);border-style:dashed}
+.cmp-empty{display:grid;gap:6px;text-align:center;padding:28px 20px}
+.cmp-who{display:grid;gap:10px;grid-template-columns:repeat(var(--n),minmax(0,1fr))}
+.cw{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;display:grid;gap:8px;align-content:start;min-width:0;position:relative}
+.cw-h{display:flex;gap:10px;align-items:center;min-width:0;padding-right:28px}
+.cw-x{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--surface);cursor:pointer;line-height:1;color:var(--muted)}
+.cw-x:hover{color:var(--ink);border-color:var(--ink)}
+.cw dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:.84rem}
+.cw dt{color:var(--muted)}
+.cw dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.cmp-tot{display:flex;flex-wrap:wrap;gap:8px}
+.tot{display:inline-flex;align-items:baseline;gap:6px;padding:8px 14px;border-radius:var(--r-sm);background:var(--surface);border:1px solid var(--line);font-size:.9rem}
+.tot b{font-family:var(--display);font-size:1.3rem;font-variant-numeric:tabular-nums}
+.tot.diverge{border-color:var(--ink)}
+.cmp-jump{display:flex;flex-wrap:wrap;gap:6px}
+.cmp-jump a{font-size:.84rem;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);text-decoration:none;display:inline-flex;gap:6px;align-items:center;min-height:36px}
+.cmp-jump a span{color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cmp-sticky{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--tb,61px));z-index:15;background:var(--bg);padding:8px 0;margin-bottom:-8px;border-bottom:1px solid var(--line)}
+.cmp-sticky .row{display:grid;gap:10px;grid-template-columns:repeat(var(--n),minmax(0,1fr))}
+.cmp-sticky .row span{display:flex;gap:8px;align-items:center;font-weight:700;font-size:.9rem;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.mono.s{width:26px;height:26px;font-size:.62rem}
+.cq{display:grid;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;scroll-margin-top:140px;box-shadow:var(--shadow)}
+.cq-h{display:grid;gap:4px}
+.cq-h h2{font-size:1.15rem}
+.cq-n{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.84rem;color:var(--muted)}
+.cq-n b{color:var(--ink)}
+.cmp-cols{display:grid;gap:10px;grid-template-columns:repeat(var(--n),minmax(0,1fr))}
+.cc{display:grid;gap:8px;align-content:start;padding:12px 14px;border-radius:var(--r-sm);background:var(--sunk);min-width:0}
+.cc-h{display:flex;gap:8px;align-items:center;font-weight:700;font-size:.88rem;min-width:0}
+.cc-r{font-weight:700;line-height:1.4}
+.cc-r.unk{font-weight:400;color:var(--muted)}
+.cc a{font-size:.84rem;color:var(--muted)}
+.cg{display:grid;gap:8px}
+.cg-h{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);display:flex;gap:8px;align-items:center}
+.cg-h::before{content:"";width:10px;height:10px;border-radius:2px;background:var(--ink)}
+.cg-h.same::before{background:transparent;border:2px solid var(--ink);border-radius:50%}
+ul.axl{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ax{display:grid;gap:8px;padding:10px 12px;border:1px solid var(--line);border-radius:var(--r-sm)}
+.ax-t{font-weight:700;line-height:1.35}
+.axv{display:grid;gap:8px;grid-template-columns:repeat(var(--n),minmax(0,1fr))}
+.axv>div{display:grid;gap:3px;align-content:start;min-width:0}
+.axv .nm{display:flex;gap:6px;align-items:center;font-size:.8rem;color:var(--muted);min-width:0}
+.ax-c{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.ax-c .ax-t{flex:1;min-width:200px;font-weight:400}
+.ax-c small{color:var(--muted);flex-basis:100%}
+.pos{display:inline-flex;gap:5px;align-items:center;justify-self:start;font-size:.84rem;font-weight:700;padding:2px 10px;border-radius:999px;white-space:nowrap}
+.pos small{font-weight:400}
+.pos.pour{background:var(--accent);color:var(--accent-ink)}
+.pos.contre{background:var(--surface);color:var(--ink);border:1.5px solid var(--ink)}
+.pos.nuance{background:var(--mark);color:var(--mark-ink)}
+.pos.none{background:transparent;color:var(--todo);font-weight:400;padding-left:0}
+.pos-n{font-size:.82rem;color:var(--muted);line-height:1.4}
+details.cmp-more>summary,details.cmp-solo>summary{cursor:pointer;color:var(--muted);font-size:.9rem;width:fit-content}
+details.cmp-more>summary:hover,details.cmp-solo>summary:hover{color:var(--ink)}
+details.cmp-more[open]>summary,details.cmp-solo[open]>summary{margin-bottom:10px}
+.cm{display:grid;gap:10px;align-content:start;min-width:0}
+.cm ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:.9rem}
+.cm .figs li{font-size:.86rem}
+.cq-foot{font-size:.88rem}
+.cq-foot a{color:var(--muted)}
+.cmp-note{font-size:.84rem;color:var(--muted);max-width:90ch}
+@media (max-width:640px){
+  .tabs a.t-home{display:none}
+  .cq{padding:14px}
+  .cmp-who{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cw dl{grid-template-columns:1fr;gap:0}
+  .cw .mono{display:none}
+  .cw .qlink{font-size:.82rem}
+  .cw dd{text-align:left;margin-bottom:4px}
+  .cmp-cols.scrollx{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px}
+  .cmp-cols.scrollx>*{scroll-snap-align:start}
+  .cmp-cols:not(.scrollx) .cc,.cmp-cols:not(.scrollx) .cm{padding:10px}
+  .cmp-cols:not(.scrollx) .cc-r{font-size:.92rem}
+  .axv.many{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cmp-sticky .row.many{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 </style>
 </head>
 <body>
@@ -609,6 +698,56 @@ const meanNote = (c) => { const v = Object.entries(POSITIONS[c.id] || {}).flatMa
 const list = () => order === "alpha" ? byName : order === "note" ? sortByScore(meanNote) : shuffled;
 const listFor = (tid, k) => order === "note" ? sortByScore(c => scoreOf(c.id, tid, k)) : list();
 
+/* Points de comparaison (22 novembre 2026). Pour chaque question, des propositions précises et la position de chaque candidat,
+   tirées uniquement des réponses ci-dessus. v : 1 pour, 0 contre, 0.5 nuancé ; an : année si la position est ancienne ; n : précision.
+   Un candidat absent d'une proposition n'a pas de position connue sur ce point. */
+const AXES = {"ecologie": {
+  "0": [
+    {t: "Viser la neutralité carbone en 2050", p: {"glucksmann": {v: 1}, "le-pen": {v: 1}, "lisnard": {v: 1, n: "Dans le cadre des engagements internationaux"}, "tondelier": {v: 1}, "zemmour": {v: 1, an: 2022}}},
+    {t: "Fixer un objectif chiffré de baisse des émissions avant 2035", p: {"attal": {v: 1, n: "−5 % par an jusqu'en 2030"}, "melenchon": {v: 1, n: "−65 % d'ici 2033"}}},
+    {t: "Privilégier l'incitation plutôt que l'obligation", p: {"attal": {v: 1}, "le-pen": {v: 1}, "lisnard": {v: 1, n: "« Une écologie de solutions et non d'injonctions »"}, "philippe": {v: 1, n: "« L'innovation et non la norme »"}, "retailleau": {v: 1, n: "Moins de normes"}, "tondelier": {v: 0.5, n: "Mêle obligations (2035, fioul, vols courts) et incitations"}, "melenchon": {v: 0, n: "Planification et « règle verte » contraignante"}}},
+    {t: "Inscrire de nouvelles exigences écologiques dans la Constitution", p: {"melenchon": {v: 1, n: "« Règle verte »"}, "glucksmann": {v: 1, n: "« République écologique »"}}},
+    {t: "Retirer ou remplacer le principe de précaution", p: {"retailleau": {v: 1, n: "Retrait de la Constitution"}, "lisnard": {v: 1, n: "Remplacé par un « principe de responsabilité »"}}},
+    {t: "Taxer les très grandes fortunes pour financer la transition", p: {"glucksmann": {v: 1, n: "5 % sur les patrimoines de plus de 100 M€"}, "tondelier": {v: 1, n: "2 % sur les grandes fortunes, ISF climatique"}}},
+    {t: "Un prix du carbone, notamment aux frontières de l'Europe", p: {"philippe": {v: 1, n: "Taxe carbone aux frontières"}, "villepin": {v: 1, n: "« Prix juste », montant non précisé"}}},
+    {t: "Arrêter l'éolien ou son financement public", p: {"le-pen": {v: 1}, "retailleau": {v: 1, n: "Fin du financement public (2025)"}, "zemmour": {v: 1, an: 2022}}}
+  ],
+  "1": [
+    {t: "Construire de nouveaux réacteurs", p: {"glucksmann": {v: 1, n: "Nombre fixé après expertise de la Cour des comptes"}, "le-pen": {v: 1, n: "Une vingtaine d'ici 2040"}, "lisnard": {v: 1, n: "Sans nombre fixé"}, "philippe": {v: 1, n: "14 EPR"}, "retailleau": {v: 1, n: "6 EPR2 en première tranche"}, "villepin": {v: 1, n: "Poursuivre les 6 EPR2"}, "roussel": {v: 1, an: 2022, n: "Au moins 6 EPR"}, "zemmour": {v: 1, an: 2022, n: "14 EPR d'ici 2050"}, "dupont-aignan": {v: 1, an: 2022}, "ruffin": {v: 0.5, an: 2023, n: "Trancher par référendum"}, "melenchon": {v: 0, n: "Arrêt des 6 EPR2"}, "tondelier": {v: 0, n: "Arrêt des EPR2 et des SMR"}}},
+    {t: "Prolonger les réacteurs existants", p: {"attal": {v: 1, n: "Maintien du parc"}, "glucksmann": {v: 1}, "le-pen": {v: 1, an: 2022, n: "Jusqu'à 60 ans"}, "lisnard": {v: 1, n: "Jusqu'à 60 ans"}, "retailleau": {v: 1, n: "Au maximum"}, "zemmour": {v: 1, an: 2022, n: "« 60 ans au moins »"}, "melenchon": {v: 0, n: "Pas au-delà de 60 ans, fermeture progressive"}, "tondelier": {v: 0, n: "Fermeture en une vingtaine d'années"}}},
+    {t: "Sortir du nucléaire à terme", p: {"melenchon": {v: 1, n: "100 % renouvelables en 2060"}, "tondelier": {v: 1, n: "En une vingtaine d'années"}, "le-pen": {v: 0}, "philippe": {v: 0}, "retailleau": {v: 0}, "lisnard": {v: 0}, "glucksmann": {v: 0}, "villepin": {v: 0}, "attal": {v: 0, n: "Nucléaire et renouvelables ensemble"}}},
+    {t: "Développer la 4e génération", p: {"le-pen": {v: 1}, "retailleau": {v: 1, n: "Relancer Astrid"}, "dupont-aignan": {v: 1, an: 2022}}},
+    {t: "Stocker les déchets à Bure (Cigéo)", p: {"melenchon": {v: 0, n: "Abandon"}, "tondelier": {v: 0, n: "Moratoire"}}},
+    {t: "Revenir sur la fusion de l'ASN et de l'IRSN", p: {"melenchon": {v: 1}, "tondelier": {v: 1}}}
+  ],
+  "2": [
+    {t: "Développer l'éolien et le solaire", p: {"attal": {v: 1}, "glucksmann": {v: 1}, "melenchon": {v: 1}, "tondelier": {v: 1}, "philippe": {v: 0.5, n: "« Là où elles sont efficaces »"}, "lisnard": {v: 0.5, n: "Projet par projet, refus de l'éolien en mer AO10"}, "le-pen": {v: 0, n: "Arrêt du développement"}, "retailleau": {v: 0, n: "Fin des subventions"}, "zemmour": {v: 0, an: 2022, n: "Arrêt des nouveaux projets éoliens"}}},
+    {t: "Un objectif chiffré de production renouvelable", p: {"glucksmann": {v: 1, n: "Plus que doubler d'ici 2035"}, "tondelier": {v: 1, n: "44 % de l'électricité en 2030"}, "melenchon": {v: 1, n: "100 % au plus tard en 2060"}}},
+    {t: "Maintenir le soutien public aux renouvelables", p: {"attal": {v: 1}, "glucksmann": {v: 1, n: "Investissement public"}, "le-pen": {v: 0, n: "Suppression des tarifs de rachat"}, "retailleau": {v: 0}, "lisnard": {v: 0.5, n: "Refus de financer l'AO10, soutien à l'autoconsommation"}}},
+    {t: "Développer l'éolien en mer", p: {"melenchon": {v: 1, n: "Énergies marines"}, "lisnard": {v: 0, n: "Refus de l'appel d'offres AO10"}}},
+    {t: "Stockage et flexibilité du réseau", p: {"attal": {v: 1}, "philippe": {v: 1}, "melenchon": {v: 1}}},
+    {t: "Plus d'hydroélectricité", p: {"retailleau": {v: 1, n: "Jusqu'à 4 GW"}, "melenchon": {v: 1, n: "Gestion publique des barrages"}}},
+    {t: "Démanteler une partie des éoliennes existantes", p: {"le-pen": {v: 1}}}
+  ],
+  "3": [
+    {t: "Fin de la vente des voitures thermiques neuves en 2035", p: {"melenchon": {v: 1}, "tondelier": {v: 1}, "le-pen": {v: 0, n: "Programme 2024"}}},
+    {t: "Supprimer les zones à faibles émissions (ZFE)", p: {"le-pen": {v: 1}, "retailleau": {v: 1}, "zemmour": {v: 1, an: 2022}}},
+    {t: "Baisser les taxes ou bloquer le prix des carburants", p: {"le-pen": {v: 1, n: "TVA à 5,5 %"}, "roussel": {v: 1, n: "TVA à 5,5 % et prix bloqué à 1,60 €"}, "melenchon": {v: 1, n: "Prix bloqué à 1,70 €"}, "retailleau": {v: 1, n: "Supprimer les certificats d'économies d'énergie"}, "attal": {v: 0, n: "Refuse une baisse générale, coût de 12 à 15 Md€"}, "philippe": {v: 0.5, n: "Aide ciblée plutôt"}}},
+    {t: "Leasing social ou aide à l'achat d'une voiture électrique", p: {"glucksmann": {v: 1, n: "1 million de voitures"}, "tondelier": {v: 1, n: "1 million de voitures"}, "melenchon": {v: 1, n: "Généralisé, voitures à 10 000 €"}, "attal": {v: 1, n: "Étendu à l'occasion"}}},
+    {t: "Aide ciblée aux automobilistes qui dépendent de leur voiture", p: {"attal": {v: 1}, "philippe": {v: 1, n: "Doubler l'aide actuelle"}}},
+    {t: "Limiter la vitesse à 110 km/h sur autoroute", p: {"tondelier": {v: 1}}}
+  ],
+  "4": [
+    {t: "Un titre ou abonnement unique de transport", p: {"attal": {v: 1, n: "Par région"}, "glucksmann": {v: 1, n: "Ticket climat national"}, "tondelier": {v: 1, n: "Ticket climat mensuel"}}},
+    {t: "Baisser le prix des billets", p: {"melenchon": {v: 1, n: "Fin des prix variables"}, "ruffin": {v: 1, n: "TER illimité à 29 € l'été"}, "glucksmann": {v: 1, n: "1 € par jour pour les moins de 25 ans"}}},
+    {t: "Rouvrir ou développer des lignes (petites lignes, trains de nuit)", p: {"melenchon": {v: 1}, "glucksmann": {v: 1}, "tondelier": {v: 1, n: "90 % de la population à 30 min d'une gare"}}},
+    {t: "Un investissement supplémentaire chiffré dans le rail", p: {"tondelier": {v: 1, n: "+1 Md€ en 2027"}, "lisnard": {v: 0.5, n: "Plan routes et rail non chiffré"}}},
+    {t: "Développer le fret ferroviaire", p: {"melenchon": {v: 1}, "dupont-aignan": {v: 1, n: "Ferroutage"}, "philippe": {v: 1, n: "20 % de fret ferroviaire"}}},
+    {t: "Renationaliser la SNCF et refuser la concurrence", p: {"melenchon": {v: 1}}},
+    {t: "Renationaliser les autoroutes", p: {"dupont-aignan": {v: 1, n: "Sans indemnité"}, "tondelier": {v: 1, n: "Progressivement"}}}
+  ]
+}};
+
 /* Adresse publique (les liens partagés pointent toujours vers le site public) */
 const SITE = "https://llilian7.github.io/presidentielle-2027/";
 const BASE = /github\.io$/.test(location.hostname) ? location.href.split("#")[0] : SITE;
@@ -643,9 +782,10 @@ function topbar(tab){
   return `<header class="topbar"><div class="topbar-in">
     <a class="brand" href="#"><span class="logo" aria-hidden="true">2027</span><span>Comparateur <small>présidentielle</small></span></a>
     <nav class="tabs" aria-label="Sections">
-      <a href="#" ${tab==="home"?'aria-current="page"':""}>Accueil</a>
+      <a class="t-home" href="#" ${tab==="home"?'aria-current="page"':""}>Accueil</a>
       <a href="#theme-${(THEMES.find(t => answered(t).length) || THEMES[0]).id}" ${tab==="theme"?'aria-current="page"':""}>Thèmes</a>
       <a href="#candidat-${list()[0].id}" ${tab==="cand"?'aria-current="page"':""}>Candidats</a>
+      <a href="#comparer-${(THEMES.find(t => answered(t).length) || THEMES[0]).id}" ${tab==="cmp"?'aria-current="page"':""}>Comparer</a>
     </nav>
     <span class="countdown" title="Premier tour dans ${daysLeft()} jours"><span class="cd-l">1er tour dans <b>${daysLeft()}</b> jours</span><b class="cd-s">J-${daysLeft()}</b></span>
   </div></header>`;
@@ -680,7 +820,7 @@ function home(){
         <span class="eyebrow">Élection présidentielle · 18 avril et 2 mai 2027</span>
         <h1>Les mêmes questions à chaque candidat</h1>
         <p class="lede">Une réponse courte par candidat, puis ses chiffres, ses mesures expliquées simplement et ses sources. Pas de classement : les seules notes portent sur la faisabilité, selon une grille publique.</p>
-        <div class="share-row"><a class="btn" href="#theme-${(THEMES.find(t => answered(t).length) || THEMES[0]).id}">Commencer à comparer →</a><button class="btn" data-share="${BASE}" data-title="Comparateur Présidentielle 2027">Partager le site</button></div>
+        <div class="share-row"><a class="btn" href="#theme-${(THEMES.find(t => answered(t).length) || THEMES[0]).id}">Voir les thèmes →</a><a class="btn" href="#comparer-${(THEMES.find(t => answered(t).length) || THEMES[0]).id}">Comparer des candidats</a><button class="btn" data-share="${BASE}" data-title="Comparateur Présidentielle 2027">Partager le site</button></div>
       </div>
       <dl class="stats">
         <div><dt>Premier tour dans</dt><dd>${daysLeft()} <small>jours</small></dd></div>
@@ -842,7 +982,7 @@ function themeView(t){
       <div class="phead"><div><span class="eyebrow">Thème</span><h1>${esc(t.nom)}</h1>
         <p class="muted">${done.length ? `${done.length} question${done.length > 1 ? "s" : ""} comparée${done.length > 1 ? "s" : ""} sur ${t.sa.length}. Ouvrez une question pour voir les réponses, puis une carte pour le détail.` : `Aucune question n'est encore comparée sur ce thème.`}</p></div>
         ${done.length ? orderToggle() : ""}</div>
-      ${done.length ? `<div class="qtools">${pick}<button class="btn" data-allq>${allOpen ? "Tout replier" : "Tout déplier"}</button></div>` : ""}
+      ${done.length ? `<div class="qtools">${pick}<span class="toolbar"><a class="btn" href="#comparer-${t.id}${focusC ? "/" + focusC : ""}">Comparer des candidats →</a><button class="btn" data-allq>${allOpen ? "Tout replier" : "Tout déplier"}</button></span></div>` : ""}
       <div class="qlist">${qs}</div>
       ${todo.length ? `<section class="hsec" aria-labelledby="h-later"><h2 id="h-later">${done.length ? "Questions à venir" : "Questions prévues"}</h2>
         <div class="later">${todo.map(k => `<span>${esc(saShort(t.sa[k]))}</span>`).join("")}</div></section>` : ""}
@@ -878,6 +1018,7 @@ function candView(c){
       ${sections}
       ${later.length ? `<section class="hsec" aria-labelledby="h-later"><h2 id="h-later">Thèmes à venir</h2>
         <div class="later">${later.map(t => `<span>${esc(t.nom)}</span>`).join("")}</div></section>` : ""}
+      ${withPos.length ? `<p><a class="btn" href="#comparer-${withPos[0].id}/${c.id}">Comparer ${esc(c.nom)} avec d'autres candidats →</a></p>` : ""}
       <div class="pager"><a class="btn" href="#candidat-${prev.id}">← ${esc(prev.nom)}</a><a class="btn" href="#candidat-${next.id}">${esc(next.nom)} →</a></div>
     </main></div>
   ${footer()}`;
@@ -914,14 +1055,108 @@ function closePanel(grid){
 }
 let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => document.querySelectorAll(".card.sel").forEach(card => { const d = card.closest(".cards").querySelector(".detail"); if (d) placePanel(card, d); }), 120); });
 
+/* ===== Comparer 2 à 4 candidats sur un thème ===== */
+const cmpIds = (s) => (s || "").split(",").filter((id, i, a) => cand(id) && a.indexOf(id) === i).slice(0, 4);
+const cmpHref = (tid, ids) => `#comparer-${tid}${ids.length ? "/" + ids.join(",") : ""}`;
+const POS = {"1": ["Pour", "✓", "pour"], "0": ["Contre", "✕", "contre"], "0.5": ["Nuancé", "≈", "nuance"]};
+function posHTML(x, withNote = true){
+  if (!x) return `<span class="pos none">— Pas de position connue</span>`;
+  const [l, i, c] = POS[String(x.v)];
+  return `<span class="pos ${c}"><span aria-hidden="true">${i}</span>${l}${x.an ? ` <small>(${x.an})</small>` : ""}</span>${withNote && x.n ? `<span class="pos-n">${esc(x.n)}</span>` : ""}`;
+}
+/* commun : tous se prononcent pareil ; partiel : ceux qui se prononcent sont d'accord ; diverge : désaccord ; seul : un seul se prononce */
+function axStatus(ax, ids){
+  const d = ids.map(id => ax.p[id]).filter(Boolean);
+  if (d.length < 2) return d.length ? "seul" : "aucun";
+  if (d.every(x => x.v === d[0].v)) return d.length === ids.length ? "commun" : "partiel";
+  return "diverge";
+}
+const firstName = (c) => c.nom.split(" ")[0];
+const lastName = (c) => c.tri || c.nom.split(" ").slice(1).join(" ");
+
+function compareView(t, ids){
+  const sel = ids.map(cand), n = sel.length, many = n > 2 ? " many" : "";
+  const done = answered(t), axes = AXES[t.id] || {};
+  const tnav = THEMES.map(x => `<a class="chip${x === t ? " on" : ""}${answered(x).length ? "" : " off"}" href="${cmpHref(x.id, ids)}">${esc(x.nom)}</a>`).join("");
+  const picker = byName.map(c => { const on = ids.includes(c.id);
+    return `<button class="chip${on ? " on" : ""}" data-cmp="${c.id}" aria-pressed="${on}">${esc(c.nom)}</button>`; }).join("");
+  const head = `<div class="phead"><div><span class="eyebrow">Comparer · ${esc(t.nom)}</span><h1>${n >= 2 ? sel.map(c => esc(lastName(c))).join(" · ") : "Comparer des candidats"}</h1>
+      <p class="muted">Choisissez 2 à 4 candidats : leurs réponses côte à côte, ce qui les rapproche et ce qui les oppose, question par question.</p></div></div>
+    <nav class="cmp-tnav" aria-label="Thèmes">${tnav}</nav>
+    ${n >= 2 ? `<details class="cmp-pick cmp-sel"><summary class="btn">Changer de candidats (${n} sur 4)</summary><div class="chips" role="group" aria-label="Candidats à comparer">${picker}</div></details>`
+      : `<div class="cmp-pick" role="group" aria-label="Candidats à comparer"><div class="chips">${picker}</div></div>`}`;
+  let body;
+  if (n < 2) body = `<div class="panel cmp-empty"><h2>${n ? `Ajoutez au moins un autre candidat à comparer avec ${esc(sel[0].nom)}` : "Choisissez au moins deux candidats"}</h2><p class="muted">Touchez les noms ci-dessus. Jusqu'à quatre candidats à la fois.</p></div>`;
+  else if (!done.length) body = `<div class="panel cmp-empty"><h2>Aucune question n'est encore comparée sur ce thème</h2><p class="muted">Choisissez un autre thème ci-dessus.</p></div>`;
+  else {
+    const tot = {commun: 0, diverge: 0, seul: 0}, jump = [];
+    const blocks = done.map(k => {
+      const A = axes[k] || [], g = {commun: [], partiel: [], diverge: [], seul: []};
+      A.forEach(ax => { const s = axStatus(ax, ids); if (g[s]) g[s].push(ax); });
+      const same = g.commun.concat(g.partiel);
+      tot.commun += same.length; tot.diverge += g.diverge.length; tot.seul += g.seul.length;
+      jump.push(`<a href="#cq-${k}">${esc(saShort(t.sa[k]))}${A.length ? `<span>${same.length} en commun · ${g.diverge.length} opposé${g.diverge.length > 1 ? "s" : ""}</span>` : ""}</a>`);
+      const cols = sel.map(c => { const p = POSITIONS[c.id]?.[t.id]?.[k];
+        return `<div class="cc"><div class="cc-h"><span class="mono s" aria-hidden="true">${initials(c.nom)}</span><span>${esc(c.nom)}</span></div>
+          ${p ? `<p class="cc-r${isUnk(p) ? " unk" : ""}">${esc(p.reponse || p.texte)}</p>${isUnk(p) ? "" : scoreBadgeS(scoreOf(c.id, t.id, k))}<a href="#theme-${t.id}-${k}-${c.id}">Détail et sources →</a>`
+              : `<p class="cc-r unk">Position à renseigner</p>`}</div>`; }).join("");
+      const divRows = g.diverge.sort((a, b) => {
+          const opp = (ax) => { const v = ids.map(id => ax.p[id]?.v).filter(v => v !== undefined); return v.includes(1) && v.includes(0) ? 0 : 1; };
+          return opp(a) - opp(b); })
+        .map(ax => `<li class="ax"><p class="ax-t">${esc(ax.t)}</p><div class="axv${many}">${sel.map(c => `<div><span class="nm"><span class="mono s" aria-hidden="true">${initials(c.nom)}</span>${esc(lastName(c))}</span>${posHTML(ax.p[c.id])}</div>`).join("")}</div></li>`).join("");
+      const sameRows = same.map(ax => { const d = ids.filter(id => ax.p[id]), v = ax.p[d[0]].v, silent = sel.filter(c => !ax.p[c.id]);
+        const lab = (silent.length ? (d.length === 2 ? "Les deux qui se prononcent : " : "Ceux qui se prononcent : ") : (n === 2 ? "Les deux : " : "Tous : ")) + POS[String(v)][0].toLowerCase();
+        const notes = d.filter(id => ax.p[id].n || ax.p[id].an).map(id => `${lastName(cand(id))} : ${ax.p[id].n ? esc(ax.p[id].n) : ""}${ax.p[id].an ? ` (${ax.p[id].an})` : ""}`).join(" · ");
+        return `<li class="ax ax-c"><span class="pos ${POS[String(v)][2]}"><span aria-hidden="true">${POS[String(v)][1]}</span>${lab}</span><span class="ax-t">${esc(ax.t)}</span>
+          ${notes || silent.length ? `<small>${notes}${notes && silent.length ? " · " : ""}${silent.length ? `${silent.map(c => esc(lastName(c))).join(", ")} : pas de position connue` : ""}</small>` : ""}</li>`; }).join("");
+      const soloRows = g.seul.map(ax => { const id = ids.find(i => ax.p[i]);
+        return `<li class="ax ax-c">${posHTML(ax.p[id], false)}<span class="ax-t"><b>${esc(lastName(cand(id)))}</b> : ${esc(ax.t)}${ax.p[id].n ? ` (${esc(ax.p[id].n)})` : ""}</span></li>`; }).join("");
+      const more = sel.map(c => { const p = POSITIONS[c.id]?.[t.id]?.[k];
+        return `<div class="cm cc"><div class="cc-h"><span class="mono s" aria-hidden="true">${initials(c.nom)}</span><span>${esc(c.nom)}</span></div>
+          ${p?.chiffres ? `<ul class="figs">${p.chiffres.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
+          ${p?.mesures ? `<ul>${p.mesures.map(m => `<li>${esc(m.titre)}${m.note ? ` · <b>${fmt(noteSur10(m.note))}</b>/10` : ""}</li>`).join("")}</ul>` : ""}
+          ${!p?.chiffres && !p?.mesures ? `<p class="muted">Aucun chiffre ni mesure.</p>` : ""}</div>`; }).join("");
+      return `<section class="cq" id="cq-${k}" aria-labelledby="cqh-${k}" style="--n:${n}">
+        <div class="cq-h"><span class="eyebrow">${esc(saShort(t.sa[k]))}</span><h2 id="cqh-${k}">${esc(qText(t, k))}</h2>
+          ${A.length ? `<p class="cq-n"><span><b>${same.length}</b> point${same.length > 1 ? "s" : ""} commun${same.length > 1 ? "s" : ""}</span><span><b>${g.diverge.length}</b> différence${g.diverge.length > 1 ? "s" : ""}</span><span><b>${g.seul.length}</b> proposition${g.seul.length > 1 ? "s" : ""} d'un seul</span></p>` : ""}</div>
+        <div class="cmp-cols${many ? " scrollx" : ""}" style="--n:${n}">${cols}</div>
+        ${divRows ? `<div class="cg"><h3 class="cg-h">Ce qui les oppose</h3><ul class="axl">${divRows}</ul></div>` : ""}
+        ${sameRows ? `<div class="cg"><h3 class="cg-h same">Ce qui les rapproche</h3><ul class="axl">${sameRows}</ul></div>` : ""}
+        ${soloRows ? `<details class="cmp-solo"${!divRows && !sameRows ? " open" : ""}><summary>Propositions portées par un seul d'entre eux (${g.seul.length})</summary><ul class="axl">${soloRows}</ul></details>` : ""}
+        ${A.length && !divRows && !sameRows && !soloRows ? `<p class="cmp-note">Aucun de ces candidats ne se prononce sur les points de comparaison de cette question.</p>` : ""}
+        ${!A.length ? `<p class="cmp-note">Points de comparaison pas encore établis pour cette question : comparez les réponses ci-dessus.</p>` : ""}
+        <details class="cmp-more"><summary>Chiffres et mesures côte à côte</summary><div class="cmp-cols${many ? " scrollx" : ""}" style="--n:${n}">${more}</div></details>
+        <p class="cq-foot"><a href="#theme-${t.id}-${k}">Voir les réponses de tous les candidats à cette question →</a></p>
+      </section>`; });
+    const who = sel.map(c => { const sc = done.map(k => scoreOf(c.id, t.id, k)).filter(x => x !== null);
+      const known = done.filter(k => { const p = POSITIONS[c.id]?.[t.id]?.[k]; return p && !isUnk(p); }).length;
+      const avg = sc.length ? Math.round(sc.reduce((a, b) => a + b, 0) / sc.length * 10) / 10 : null;
+      return `<div class="cw"><div class="cw-h">${whoHTML(c)}</div><button class="cw-x" data-cmp="${c.id}" aria-label="Retirer ${esc(c.nom)} de la comparaison">×</button>
+        <dl><dt>Réponses connues</dt><dd>${known} sur ${done.length}</dd><dt>Faisabilité moyenne</dt><dd>${avg === null ? "non noté" : `<b>${fmt(avg)}</b>/10`}</dd></dl>
+        <a class="qlink" href="#candidat-${c.id}">Toutes ses réponses →</a></div>`; }).join("");
+    body = `<div class="cmp-who" style="--n:${n}">${who}</div>
+      <div class="cmp-tot"><span class="tot"><b>${tot.commun}</b> point${tot.commun > 1 ? "s" : ""} commun${tot.commun > 1 ? "s" : ""}</span><span class="tot diverge"><b>${tot.diverge}</b> différence${tot.diverge > 1 ? "s" : ""}</span><span class="tot"><b>${tot.seul}</b> proposition${tot.seul > 1 ? "s" : ""} d'un seul</span>
+        <button class="btn" data-share="${BASE}${cmpHref(t.id, ids)}" data-title="${esc(sel.map(c => c.nom).join(" et "))} : ${esc(t.nom)}">Partager cette comparaison</button></div>
+      <p class="cmp-note">« Pour », « contre » et « nuancé » résument la position de chaque candidat sur des propositions précises, à partir de ses réponses et de leurs sources. Une position ancienne est suivie de son année.</p>
+      <nav class="cmp-jump" aria-label="Questions">${jump.join("")}</nav>
+      <div class="cmp-sticky" aria-hidden="true"><div class="row${many}" style="--n:${n}">${sel.map(c => `<span>${esc(lastName(c))}</span>`).join("")}</div></div>
+      ${blocks.join("")}`;
+  }
+  return `${topbar("cmp")}
+  <div class="shell full"><main class="main">${head}${body}</main></div>
+  ${footer()}`;
+}
+
 function render(){
   const h = location.hash.slice(1);
   let html, anchor = null;
-  const m = h.match(/^theme-([a-z]+)(?:-(\d+)(?:-([a-z-]+))?)?$/);
-  if (m && theme(m[1])) { if (m[2] !== undefined) { openQ.add(m[1] + "-" + m[2]); anchor = "q-" + m[2]; if (m[3] && focusC && focusC !== m[3]) focusC = ""; } html = themeView(theme(m[1])); }
+  const m = h.match(/^theme-([a-z]+)(?:-(\d+)(?:-([a-z-]+))?)?$/), mc = h.match(/^comparer-([a-z]+)(?:\/(.*))?$/);
+  if (mc && theme(mc[1])) html = compareView(theme(mc[1]), cmpIds(mc[2]));
+  else if (m && theme(m[1])) { if (m[2] !== undefined) { openQ.add(m[1] + "-" + m[2]); anchor = "q-" + m[2]; if (m[3] && focusC && focusC !== m[3]) focusC = ""; } html = themeView(theme(m[1])); }
   else if (h.startsWith("candidat-") && cand(h.slice(9))) html = candView(cand(h.slice(9)));
   else { html = home(); if (["themes","candidats","tableau"].includes(h)) anchor = h; }
   $("#app").innerHTML = html;
+  const tb = document.querySelector(".topbar"); if (tb) document.documentElement.style.setProperty("--tb", tb.offsetHeight + "px");
   if (anchor) document.getElementById(anchor)?.scrollIntoView(); else window.scrollTo(0,0);
   const btn = m?.[3] && document.querySelector(`#q-${m[2]} [data-open^="${m[3]}|"]`);
   if (btn) { toggleCard(btn); btn.closest(".card").scrollIntoView({block: "start"}); }
@@ -935,6 +1170,11 @@ document.addEventListener("click", (e) => {
   if (f) { const grid = f.closest(".cards"), card = grid.querySelector(".card.sel"); closePanel(grid); if (card) { card.querySelector(".card-btn").focus(); card.scrollIntoView({block: "nearest"}); } return; }
   const o = e.target.closest("[data-open]");
   if (o) { toggleCard(o); return; }
+  const cb = e.target.closest("[data-cmp]");
+  if (cb) { const mc = location.hash.match(/^#comparer-([a-z]+)(?:\/(.*))?$/); if (!mc) return;
+    let ids = cmpIds(mc[2]); const id = cb.dataset.cmp;
+    if (ids.includes(id)) ids = ids.filter(x => x !== id); else if (ids.length >= 4) { toast("Quatre candidats au maximum : retirez-en un d'abord."); return; } else ids.push(id);
+    history.replaceState(null, "", cmpHref(mc[1], ids)); const y = window.scrollY; render(); window.scrollTo(0, y); return; }
   const sh = e.target.closest("[data-share]");
   if (sh) { shareLink(sh.dataset.share, sh.dataset.title); return; }
   if (e.target.closest("[data-top]")) { window.scrollTo({top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}); return; }
