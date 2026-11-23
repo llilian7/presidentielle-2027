@@ -137,6 +137,10 @@ button{font:inherit;color:inherit}
 .card .rep.unk{font-weight:400;color:var(--muted)}
 .card-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:10px;border-top:1px solid var(--line);font-size:.84rem}
 .card-foot .go{color:var(--muted)}
+.card-foot{flex-wrap:wrap;row-gap:6px}
+.card-foot .score{flex:1 1 auto;min-width:0}
+.card-foot .score b{white-space:normal;line-height:1.25}
+.card-foot .go{margin-left:auto;white-space:nowrap}
 .card:hover .go{color:var(--ink)}
 
 .score{display:inline-flex;align-items:center;gap:6px;font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.86rem}
@@ -433,6 +437,33 @@ details.cmp-more[open]>summary,details.cmp-solo[open]>summary{margin-bottom:10px
   .axv.many{grid-template-columns:repeat(2,minmax(0,1fr))}
   .cmp-sticky .row.many{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+/* Récap de faisabilité : une case par candidat et par question, plus foncée quand c'est plus faisable */
+.fxsum{display:grid;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow)}
+.fxsum h2{font-size:1.1rem}
+.fxsum > p{margin:0;font-size:.9rem}
+.fxwrap{overflow-x:auto;margin:0 -18px;padding:0 18px;-webkit-overflow-scrolling:touch}
+.fxt{border-collapse:separate;border-spacing:3px;font-variant-numeric:tabular-nums;min-width:100%}
+.fxt th{font-weight:400;font-size:.76rem;color:var(--muted);text-align:center;vertical-align:bottom;padding:0 2px 4px;line-height:1.2;min-width:58px}
+.fxt thead a{color:inherit;text-decoration:none}
+.fxt thead a:hover{color:var(--ink);text-decoration:underline}
+.fxt th[scope="row"]{position:sticky;left:0;z-index:1;background:var(--surface);text-align:left;vertical-align:middle;font-size:.88rem;color:var(--ink);padding:0 10px 0 0;white-space:nowrap;min-width:0}
+.fxt th[scope="row"] a{color:inherit;text-decoration:none}
+.fxt th[scope="row"] a:hover{text-decoration:underline}
+.fxt tr.focus th[scope="row"]{font-weight:700}
+.fxt td{padding:0}
+.fxc{display:grid;place-items:center;height:38px;border-radius:6px;text-decoration:none;font-family:var(--display);font-weight:800;font-size:.95rem;color:var(--ink);border:1px solid transparent}
+.fxc:hover{outline:2px solid var(--ink);outline-offset:-2px}
+.fxc.f{background:var(--accent);color:var(--accent-ink)}
+.fxc.d{background:color-mix(in srgb,var(--accent) 38%,var(--surface))}
+.fxc.i{background:color-mix(in srgb,var(--accent) 12%,var(--surface));border-color:color-mix(in srgb,var(--accent) 30%,var(--surface))}
+.fxc.z{background:var(--surface);border:1px dashed var(--muted)}
+.fxc.v,.fxc.x{background:var(--sunk);color:var(--muted);font-family:var(--body);font-weight:400;font-size:.74rem}
+.fxc.u{color:var(--muted);font-weight:400;background:color-mix(in srgb,var(--sunk) 45%,var(--surface))}
+.fxhint{display:none;font-size:.8rem}
+.fxleg{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0;padding:0;list-style:none;font-size:.8rem;color:var(--muted)}
+.fxleg li{display:flex;align-items:center;gap:6px}
+.fxleg .fxc{width:28px;height:20px;font-size:.7rem}
+@media (max-width:640px){.fxt .fn{display:none}.fxhint{display:block}.fxsum{padding:14px}.fxwrap{margin:0 -14px;padding:0 14px}.fxt th{min-width:48px;font-size:.72rem}.fxc{height:34px}}
 </style>
 </head>
 <body>
@@ -1272,6 +1303,31 @@ function cardHTML(c, t, k){
     </article>`;
 }
 
+/* Récap de faisabilité du thème : note de la position principale, sans moyenne ni classement */
+const COURT = {ecologie: ["Climat", "Nucléaire", "Renouvelables", "Voiture et carburants", "Transports", "Agriculture", "Chasse et pêche", "Biodiversité et eau", "Adaptation", "Fiscalité", "Condition animale"]};
+function fxCell(c, t, k){
+  const p = POSITIONS[c.id]?.[t.id]?.[k], n = NOTES[c.id]?.[t.id]?.[k], q = COURT[t.id]?.[k] || saShort(t.sa[k]);
+  if (!p || isUnk(p)) return `<a class="fxc u" href="#theme-${t.id}-${k}" aria-label="${esc(c.nom)}, ${esc(q)} : pas de position connue">–</a>`;
+  const s = noteSur10(n), mot = noteMot(n);
+  const cls = !n ? "u" : n.statut === "D" ? "x" : s === null ? "v" : mot === "Faisable" ? "f" : mot === "Difficile" ? "d" : s === 0 ? "z" : "i";
+  const txt = !n ? "–" : n.statut === "D" ? "déjà" : s === null ? "vague" : fmt(s);
+  return `<a class="fxc ${cls}" href="#theme-${t.id}-${k}-${c.id}" title="${esc(c.nom)} · ${esc(q)} : ${esc(mot)}${s !== null ? `, ${fmt(s)}/10` : ""}" aria-label="${esc(c.nom)}, ${esc(q)} : ${esc(mot)}${s !== null ? `, ${fmt(s)} sur 10` : ""}">${txt}</a>`;
+}
+function fxSummaryHTML(t, done){
+  if (!done.length || !CANDIDATS.some(c => done.some(k => NOTES[c.id]?.[t.id]?.[k]))) return "";
+  const head = done.map(k => `<th scope="col"><a href="#theme-${t.id}-${k}">${esc(COURT[t.id]?.[k] || saShort(t.sa[k]))}</a></th>`).join("");
+  const rows = list().map(c => `<tr${c.id === focusC ? ' class="focus"' : ""}><th scope="row"><a href="#candidat-${c.id}" aria-label="${esc(c.nom)}">${c.nom.includes(" ") ? `<span class="fn">${esc(c.nom.slice(0, c.nom.indexOf(" ")))} </span>${esc(c.nom.slice(c.nom.indexOf(" ") + 1))}` : esc(c.nom)}</a></th>${done.map(k => `<td>${fxCell(c, t, k)}</td>`).join("")}</tr>`).join("");
+  return `<section class="fxsum" aria-labelledby="h-fxsum">
+    <h2 id="h-fxsum">En un coup d'œil : la faisabilité de chaque programme</h2>
+    <p class="muted">Note sur 10 de la position principale de chaque candidat, question par question. Plus la case est foncée, plus la position est faisable. Touchez une case pour lire le détail. Ce n'est pas un classement : la note ne juge ni l'ambition ni le bien-fondé d'une position.</p>
+    <p class="muted fxhint">Faites défiler la grille vers la droite pour voir toutes les questions.</p>
+    <div class="fxwrap"><table class="fxt"><thead><tr><td></td>${head}</tr></thead><tbody>${rows}</tbody></table></div>
+    <ul class="fxleg" aria-label="Légende">
+      <li><span class="fxc f">8</span>Faisable (7 à 10)</li><li><span class="fxc d">5</span>Difficile</li><li><span class="fxc i">3</span>Très improbable</li><li><span class="fxc z">0</span>Impossible</li>
+      <li><span class="fxc v">vague</span>Trop vague pour être notée</li><li><span class="fxc x">déjà</span>Déjà décidée</li><li><span class="fxc u">–</span>Pas de position connue</li></ul>
+  </section>`;
+}
+
 function themeView(t){
   const done = answered(t), todo = t.sa.map((s, k) => k).filter(k => !done.includes(k));
   const mnav = THEMES.map(x => `<a class="chip${x===t?" on":""}" href="#theme-${x.id}">${esc(x.nom)}</a>`).join("");
@@ -1303,6 +1359,7 @@ function themeView(t){
         <p class="muted">${done.length ? `${done.length} question${done.length > 1 ? "s" : ""} comparée${done.length > 1 ? "s" : ""} sur ${t.sa.length}. Ouvrez une question pour voir les réponses, puis une carte pour le détail.` : `Aucune question n'est encore comparée sur ce thème.`}</p></div>
         ${done.length ? orderToggle() : ""}</div>
       ${done.length ? `<div class="qtools">${pick}<span class="toolbar"><a class="btn" href="#comparer-${t.id}${focusC ? "/" + focusC : ""}">Comparer des candidats →</a><button class="btn" data-allq>${allOpen ? "Tout replier" : "Tout déplier"}</button></span></div>` : ""}
+      ${fxSummaryHTML(t, done)}
       <div class="qlist">${qs}</div>
       ${todo.length ? `<section class="hsec" aria-labelledby="h-later"><h2 id="h-later">${done.length ? "Questions à venir" : "Questions prévues"}</h2>
         <div class="later">${todo.map(k => `<span>${esc(saShort(t.sa[k]))}</span>`).join("")}</div></section>` : ""}
