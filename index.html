@@ -438,7 +438,7 @@ details.cmp-more[open]>summary,details.cmp-solo[open]>summary{margin-bottom:10px
   .cmp-sticky .row.many{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 /* Récap de faisabilité : une case par candidat et par question, plus foncée quand c'est plus faisable */
-.fxsum{display:grid;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow)}
+.fxsum{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow)}
 .fxsum h2{font-size:1.1rem}
 .fxsum > p{margin:0;font-size:.9rem}
 .fxwrap{overflow-x:auto;margin:0 -18px;padding:0 18px;-webkit-overflow-scrolling:touch}
@@ -458,6 +458,9 @@ details.cmp-more[open]>summary,details.cmp-solo[open]>summary{margin-bottom:10px
 .fxc.i{background:color-mix(in srgb,var(--accent) 12%,var(--surface));border-color:color-mix(in srgb,var(--accent) 30%,var(--surface))}
 .fxc.z{background:var(--surface);border:1px dashed var(--muted)}
 .fxc.v,.fxc.x{background:var(--sunk);color:var(--muted);font-family:var(--body);font-weight:400;font-size:.74rem}
+.fxc.n,.fxc.o{background:var(--sunk);color:var(--muted);font-family:var(--body);font-weight:400;font-size:.68rem;line-height:1.1;text-align:center}
+.fxc.o{background:repeating-linear-gradient(135deg,var(--sunk) 0 4px,var(--surface) 4px 7px)}
+.fxleg .fxc.n,.fxleg .fxc.o{width:auto;padding:0 6px}
 .fxc.u{color:var(--muted);font-weight:400;background:color-mix(in srgb,var(--sunk) 45%,var(--surface))}
 .fxhint{display:none;font-size:.8rem}
 .fxleg{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0;padding:0;list-style:none;font-size:.8rem;color:var(--muted)}
@@ -521,16 +524,18 @@ details.fxmore{border-top:1px solid var(--line);padding-top:10px}
 .fxb .nm:hover{text-decoration:underline}
 .fxm{display:grid;grid-template-columns:minmax(0,1fr) 54px;gap:10px;align-items:center}
 .fxm:last-child{grid-template-columns:minmax(0,1fr) 112px}
+.fxb .fxm:nth-child(2){grid-template-columns:minmax(0,1fr) 128px}
 .fxm .fxl{display:none}
 .fxm b{font-family:var(--display);font-weight:800;font-size:.95rem;font-variant-numeric:tabular-nums;white-space:nowrap;line-height:1.2}
 .fxm b small{font-family:var(--body);font-weight:400;font-size:.74rem;color:var(--muted)}
 .fxm b em{font-family:var(--body);font-style:normal;font-weight:400;font-size:.72rem;color:var(--muted);margin-left:6px}
-.fxm b.na{font-family:var(--body);font-weight:400;font-size:.8rem;color:var(--muted);grid-column:1 / -1;grid-row:1}
+.fxm b.na{white-space:normal;font-family:var(--body);font-weight:400;font-size:.8rem;color:var(--muted);grid-column:1 / -1;grid-row:1}
 .fxm:has(b.na) .trk{display:none}
 .trk{position:relative;height:14px;border-radius:3px;background:var(--sunk);display:block;overflow:hidden}
 .trk.seg{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:2px;background:none}
 .trk.seg i{background:var(--sunk);border-radius:2px}
 .trk.seg i.on{background:var(--accent)}
+.trk.seg i.old{background:repeating-linear-gradient(135deg,var(--accent) 0 2px,color-mix(in srgb,var(--accent) 25%,var(--surface)) 2px 5px)}
 .trk .fill{position:absolute;inset:0 auto 0 0;border-radius:3px;background:var(--accent)}
 .trk .fill.z2{background:color-mix(in srgb,var(--accent) 60%,var(--surface))}
 .trk .fill.z3{background:color-mix(in srgb,var(--accent) 32%,var(--surface))}
@@ -1389,16 +1394,21 @@ function cardHTML(c, t, k){
 const COURT = {ecologie: ["Climat", "Nucléaire", "Renouvelables", "Voiture et carburants", "Transports", "Agriculture", "Chasse et pêche", "Biodiversité et eau", "Adaptation", "Fiscalité", "Condition animale"]};
 function fxCell(c, t, k){
   const p = POSITIONS[c.id]?.[t.id]?.[k], n = NOTES[c.id]?.[t.id]?.[k], q = COURT[t.id]?.[k] || saShort(t.sa[k]);
-  if (!p || isUnk(p)) return `<a class="fxc u" href="#theme-${t.id}-${k}" aria-label="${esc(c.nom)}, ${esc(q)} : pas de position connue">–</a>`;
+  if (noPos(p)) return `<a class="fxc u" href="#theme-${t.id}-${k}" aria-label="${esc(c.nom)}, ${esc(q)} : pas de position connue">–</a>`;
+  if (!n) { const old = isOld(p), lb = old ? "position ancienne, non notée" : "position non notée";
+    return `<a class="fxc ${old ? "o" : "n"}" href="#theme-${t.id}-${k}-${c.id}" title="${esc(c.nom)} · ${esc(q)} : ${lb}" aria-label="${esc(c.nom)}, ${esc(q)} : ${lb}">${old ? "ancienne" : "non notée"}</a>`; }
   const s = noteSur10(n), mot = noteMot(n);
   const cls = !n ? "u" : n.statut === "D" ? "x" : s === null ? "v" : mot === "Faisable" ? "f" : mot === "Difficile" ? "d" : s === 0 ? "z" : "i";
   const txt = !n ? "–" : n.statut === "D" ? "déjà" : s === null ? "vague" : fmt(s);
   return `<a class="fxc ${cls}" href="#theme-${t.id}-${k}-${c.id}" title="${esc(c.nom)} · ${esc(q)} : ${esc(mot)}${s !== null ? `, ${fmt(s)}/10` : ""}" aria-label="${esc(c.nom)}, ${esc(q)} : ${esc(mot)}${s !== null ? `, ${fmt(s)} sur 10` : ""}">${txt}</a>`;
 }
-const FXORDRE = ["f", "d", "i", "z", "v", "x", "u"];
+const FXORDRE = ["f", "d", "i", "z", "v", "x", "n", "o", "u"];
+/* Position connue mais non notée : ancienne (avant 2026) ou récente non notée ; « pas encore de réponse » ne compte pas */
+const noPos = (p) => !p || isUnk(p) || /^Pas encore de réponse/.test(p.reponse || "");
 function fxKind(c, t, k){
   const p = POSITIONS[c.id]?.[t.id]?.[k], n = NOTES[c.id]?.[t.id]?.[k];
-  if (!p || isUnk(p) || !n) return "u";
+  if (noPos(p)) return "u";
+  if (!n) return isOld(p) ? "o" : "n";
   const s = noteSur10(n), mot = noteMot(n);
   return n.statut === "D" ? "x" : s === null ? "v" : mot === "Faisable" ? "f" : mot === "Difficile" ? "d" : s === 0 ? "z" : "i";
 }
@@ -1409,7 +1419,7 @@ function fxSynthese(c, t, done){
   const cnt = (x) => K.filter(e => e.kind === x).length;
   const notees = K.filter(e => ["f", "d", "i", "z"].includes(e.kind));
   const parts = [[cnt("f"), "faisable", "faisables"], [cnt("d"), "difficile", "difficiles"], [cnt("i"), "très improbable", "très improbables"], [cnt("z"), "impossible", "impossibles"],
-    [cnt("v"), "trop vague", "trop vagues"], [cnt("x"), "déjà décidée", "déjà décidées"]].filter(x => x[0]).map(x => plur(...x));
+    [cnt("v"), "trop vague", "trop vagues"], [cnt("x"), "déjà décidée", "déjà décidées"], [cnt("n"), "non notée", "non notées"], [cnt("o"), "ancienne", "anciennes"]].filter(x => x[0]).map(x => plur(...x));
   const sans = cnt("u");
   let txt = parts.length ? `<b>${parts.join(", ")}</b>` : "";
   txt += sans ? `${txt ? " · " : ""}${sans === done.length ? "Aucune position connue sur ce thème" : `pas de position connue sur ${sans} question${sans > 1 ? "s" : ""}`}` : "";
@@ -1426,9 +1436,9 @@ function fxSynthese(c, t, done){
 /* Tri propre au récap : aléatoire par défaut, comme le reste du site */
 let fxSort = "random";
 function fxStats(c, t, done){
-  const K = done.map(k => fxKind(c, t, k)), known = K.filter(x => x !== "u").length;
+  const K = done.map(k => fxKind(c, t, k)), known = K.filter(x => x !== "u").length, old = K.filter(x => x === "o").length;
   const s = done.filter((k, i) => ["f", "d", "i", "z"].includes(K[i])).map(k => noteSur10(NOTES[c.id][t.id][k]));
-  return {known, n: s.length, mean: s.length ? Math.round(s.reduce((a, b) => a + b, 0) / s.length * 10) / 10 : null};
+  return {known, old, n: s.length, mean: s.length >= 3 ? Math.round(s.reduce((a, b) => a + b, 0) / s.length * 10) / 10 : null};
 }
 function fxOrder(t, done){
   if (fxSort === "alpha") return byName;
@@ -1445,17 +1455,15 @@ const fxSortBar = () => `<div class="toolbar fxsort" role="group" aria-label="Tr
 function fxBarsHTML(t, done){
   const nq = done.length;
   const rows = fxOrder(t, done).map(c => {
-    const K = done.map(k => fxKind(c, t, k)), known = K.filter(x => x !== "u").length;
-    const s = done.filter((k, i) => ["f", "d", "i", "z"].includes(K[i])).map(k => noteSur10(NOTES[c.id][t.id][k]));
-    const mean = s.length ? Math.round(s.reduce((a, b) => a + b, 0) / s.length * 10) / 10 : null, few = s.length > 0 && s.length < 3;
-    const z = mean === null ? "" : mean >= 7 ? "z1" : mean >= 4 ? "z2" : "z3";
-    const cov = `<div class="fxm"><span class="fxl">Sujets couverts</span><span class="trk seg" style="--n:${nq}">${done.map((k, i) => `<i${i < known ? ' class="on"' : ""}></i>`).join("")}</span><b>${known}<small>/${nq}</small></b></div>`;
+    const {known, old, n, mean} = fxStats(c, t, done);
+    const z = mean === null ? "" : mean >= 7 ? "z1" : mean >= 4 ? "z2" : "z3", s = {length: n}, few = false;
+    const cov = `<div class="fxm" title="${known} sujet${known > 1 ? "s" : ""} avec une position connue${old ? `, dont ${old} ancienne${old > 1 ? "s" : ""} (avant 2026)` : ""}"><span class="fxl">Sujets couverts</span><span class="trk seg" style="--n:${nq}">${done.map((k, i) => `<i${i < known - old ? ' class="on"' : i < known ? ' class="old"' : ""}></i>`).join("")}</span><b>${known}<small>/${nq}</small>${old ? `<em>dont ${old} ancienne${old > 1 ? "s" : ""}</em>` : ""}</b></div>`;
     const fea = mean === null
-      ? `<div class="fxm"><span class="fxl">Faisabilité moyenne</span><span class="trk"></span><b class="na">Aucune position notée</b></div>`
+      ? `<div class="fxm"><span class="fxl">Faisabilité moyenne</span><span class="trk"></span><b class="na">${n ? `Pas de moyenne : ${n} seule${n > 1 ? "s" : ""} position${n > 1 ? "s" : ""} notée${n > 1 ? "s" : ""}` : "Aucune position notée"}</b></div>`
       : `<div class="fxm" title="Moyenne sur ${s.length} position${s.length > 1 ? "s" : ""} notée${s.length > 1 ? "s" : ""}${few ? " : à lire avec prudence" : ""}"><span class="fxl">Faisabilité moyenne</span><span class="trk"><i class="fill ${z}${few ? " few" : ""}" style="width:${mean * 10}%"></i><i class="t7"></i></span><b>${fmt(mean)}<small>/10</small><em>${s.length} notée${s.length > 1 ? "s" : ""}</em></b></div>`;
     return `<li class="fxb"><a class="nm" href="#candidat-${c.id}" title="${esc(c.nom)} (${esc(c.parti)})">${esc(c.nom)}</a>${cov}${fea}</li>`; }).join("");
   return `<div class="fxbars"><div class="fxhead" aria-hidden="true"><span></span><span>Sujets couverts <small>(sur ${nq})</small></span><span>Faisabilité moyenne <small>(sur 10, positions notées)</small></span></div><ul>${rows}</ul>
-    <p class="fxnone">Le trait vertical marque 7 sur 10, seuil à partir duquel une position est « faisable ». Barre hachurée : moyenne sur 1 ou 2 positions seulement, à lire avec prudence.</p></div>`;
+    <p class="fxnone">Le trait vertical marque 7 sur 10, seuil à partir duquel une position est « faisable ». La moyenne n'est affichée qu'à partir de 3 positions notées. Cases hachurées : positions d'avant 2026, comptées comme couvertes mais pas notées.</p></div>`;
 }
 
 function fxSummaryHTML(t, done){
@@ -1475,7 +1483,7 @@ function fxSummaryHTML(t, done){
     <ul class="fxrows">${rowsR}</ul>
     <ul class="fxleg" aria-label="Légende">
       <li><span class="fxc f">8</span>Faisable (7 à 10)</li><li><span class="fxc d">5</span>Difficile</li><li><span class="fxc i">3</span>Très improbable</li><li><span class="fxc z">0</span>Impossible</li>
-      <li><span class="fxc v">vague</span>Trop vague pour être notée</li><li><span class="fxc x">déjà</span>Déjà décidée</li><li><span class="fxc u">–</span>Pas de position connue</li></ul>
+      <li><span class="fxc v">vague</span>Trop vague pour être notée</li><li><span class="fxc x">déjà</span>Déjà décidée</li><li><span class="fxc n">non notée</span>Position non notée</li><li><span class="fxc o">ancienne</span>Position d'avant 2026, non notée</li><li><span class="fxc u">–</span>Pas de position connue</li></ul>
     </details>
     <details class="fxmore"><summary>Voir le détail question par question</summary>
       <p class="muted fxhint">Faites défiler la grille vers la droite pour voir toutes les questions.</p>
