@@ -515,9 +515,9 @@ details.fxmore{border-top:1px solid var(--line);padding-top:10px}
 .fxhead,.fxb{display:grid;grid-template-columns:minmax(140px,180px) minmax(0,1fr) minmax(0,1.25fr);gap:2px 22px;align-items:center}
 .fxhead{font-size:.76rem;font-weight:700;color:var(--muted);padding-bottom:4px;border-bottom:1px solid var(--line)}
 .fxhead small{font-weight:400}
-.fxb{padding:4px 0;border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.fxb{padding:8px 0;border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
 .fxb:last-child{border-bottom:0}
-.fxb .nm{font-weight:700;font-size:.9rem;text-decoration:none;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fxb .nm{font-weight:700;font-size:.95rem;text-decoration:none;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fxb .nm:hover{text-decoration:underline}
 .fxm{display:grid;grid-template-columns:minmax(0,1fr) 54px;gap:10px;align-items:center}
 .fxm:last-child{grid-template-columns:minmax(0,1fr) 112px}
@@ -527,7 +527,7 @@ details.fxmore{border-top:1px solid var(--line);padding-top:10px}
 .fxm b em{font-family:var(--body);font-style:normal;font-weight:400;font-size:.72rem;color:var(--muted);margin-left:6px}
 .fxm b.na{font-family:var(--body);font-weight:400;font-size:.8rem;color:var(--muted);grid-column:1 / -1;grid-row:1}
 .fxm:has(b.na) .trk{display:none}
-.trk{position:relative;height:11px;border-radius:3px;background:var(--sunk);display:block;overflow:hidden}
+.trk{position:relative;height:14px;border-radius:3px;background:var(--sunk);display:block;overflow:hidden}
 .trk.seg{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:2px;background:none}
 .trk.seg i{background:var(--sunk);border-radius:2px}
 .trk.seg i.on{background:var(--accent)}
@@ -539,7 +539,7 @@ details.fxmore{border-top:1px solid var(--line);padding-top:10px}
 @media (max-width:760px){
   .fxhead{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2px 14px}
   .fxhead>span:first-child{display:none}
-  .fxb{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2px 14px;padding:5px 0}
+  .fxb{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px 14px;padding:8px 0}
   .fxb .nm{grid-column:1 / -1;font-size:.86rem}
   .fxm,.fxm:last-child{grid-template-columns:minmax(0,1fr) auto;gap:6px}
   .fxm b{font-size:.86rem}
