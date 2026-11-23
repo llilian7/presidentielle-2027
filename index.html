@@ -463,6 +463,88 @@ details.cmp-more[open]>summary,details.cmp-solo[open]>summary{margin-bottom:10px
 .fxleg{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0;padding:0;list-style:none;font-size:.8rem;color:var(--muted)}
 .fxleg li{display:flex;align-items:center;gap:6px}
 .fxleg .fxc{width:28px;height:20px;font-size:.7rem}
+.fxrows{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.fxr{display:grid;grid-template-columns:minmax(150px,190px) minmax(0,1fr);gap:4px 16px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.fxr:first-child{border-top:0}
+.fxr .nm{font-weight:700;text-decoration:none;line-height:1.25}
+.fxr .nm small{display:block;font-weight:400;color:var(--muted);font-size:.78rem}
+.fxr .nm:hover{text-decoration:underline}
+.fxbar{display:flex;gap:2px;height:26px}
+.fxbar a{flex:1 1 0;min-width:0;border-radius:4px;display:grid;place-items:center;font:800 .78rem var(--display);text-decoration:none;color:var(--ink)}
+.fxbar .fxc{height:100%;border-radius:4px}
+.fxbar a:hover{outline:2px solid var(--ink);outline-offset:-2px}
+.fxsyn{grid-column:2;font-size:.86rem;line-height:1.45;color:var(--muted)}
+.fxsyn b{color:var(--ink);font-weight:700}
+details.fxmore>summary{cursor:pointer;color:var(--muted);font-size:.9rem;width:fit-content}
+details.fxmore>summary:hover{color:var(--ink)}
+details.fxmore[open]>summary{margin-bottom:10px}
+@media (max-width:640px){.fxr{grid-template-columns:minmax(0,1fr)}.fxsyn{grid-column:1}.fxbar{height:24px}.fxbar a{font-size:.7rem}}
+.fxplot{display:grid;gap:8px}
+.fxplot svg{width:100%;height:auto;display:block;overflow:visible}
+.fxplot .gl{stroke:var(--line);stroke-width:1}
+.fxplot .band.z1{fill:color-mix(in srgb,var(--accent) 20%,var(--surface))}
+.fxplot .band.z2{fill:color-mix(in srgb,var(--accent) 8%,var(--surface))}
+.fxplot .band.z3{fill:var(--surface)}
+.fxplot .ax{fill:var(--muted);font:12px var(--body)}
+.fxplot .axt{fill:var(--muted);font:700 12px var(--body)}
+.fxplot .bandl{fill:var(--muted);font:700 11px var(--body);text-transform:uppercase;letter-spacing:.08em}
+.fxplot .bandl.z1{fill:var(--accent)}
+.fxplot .dot{fill:var(--accent);stroke:var(--surface);stroke-width:2.5}
+.fxplot .dot.z2{fill:color-mix(in srgb,var(--accent) 62%,var(--surface))}
+.fxplot .dot.z3{fill:color-mix(in srgb,var(--accent) 30%,var(--surface));stroke:var(--accent);stroke-width:1.5}
+.fxplot .dot.few{fill:var(--surface);stroke:var(--accent);stroke-width:2.5;stroke-dasharray:4 3}
+.fxplot a:hover .dot{stroke:var(--ink)}
+.fxplot .lbl{fill:var(--ink);font:700 13px var(--body)}
+@media (max-width:640px){.fxplot .lbl{font-size:12px}}
+.fxplot .lbl tspan{font-weight:400;fill:var(--muted)}
+.fxplot .ini{fill:var(--accent-ink);font:800 10px var(--display);pointer-events:none}
+.fxplot .ini.z2{fill:var(--ink)}
+.fxplot .ini.z3,.fxplot .ini.few{fill:var(--accent)}
+@media (max-width:640px){.fxplot .ini{font-size:9.5px}}
+.fxplot .lead{stroke:var(--muted);stroke-width:1}
+.fxkey{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0;padding:0;list-style:none;font-size:.8rem;color:var(--muted)}
+.fxkey li{display:flex;align-items:center;gap:6px}
+.fxkey i{width:12px;height:12px;border-radius:50%;background:var(--accent);display:inline-block}
+.fxkey i.few{background:var(--surface);border:2px dashed var(--accent)}
+.fxnone{font-size:.86rem;color:var(--muted)}
+details.fxmore{border-top:1px solid var(--line);padding-top:10px}
+.fxtop{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px}
+.fxsort .btn{font-size:.82rem;padding:4px 11px;min-height:32px}
+@media (max-width:640px){.fxsort{width:100%}.fxsort .seg{display:grid;grid-template-columns:1fr 1fr;width:100%;border-radius:14px}.fxsort .seg .btn{justify-content:center;border-radius:11px}}
+.fxbars ul{list-style:none;margin:0;padding:0;display:grid}
+.fxhead,.fxb{display:grid;grid-template-columns:minmax(140px,180px) minmax(0,1fr) minmax(0,1.25fr);gap:2px 22px;align-items:center}
+.fxhead{font-size:.76rem;font-weight:700;color:var(--muted);padding-bottom:4px;border-bottom:1px solid var(--line)}
+.fxhead small{font-weight:400}
+.fxb{padding:4px 0;border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.fxb:last-child{border-bottom:0}
+.fxb .nm{font-weight:700;font-size:.9rem;text-decoration:none;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fxb .nm:hover{text-decoration:underline}
+.fxm{display:grid;grid-template-columns:minmax(0,1fr) 54px;gap:10px;align-items:center}
+.fxm:last-child{grid-template-columns:minmax(0,1fr) 112px}
+.fxm .fxl{display:none}
+.fxm b{font-family:var(--display);font-weight:800;font-size:.95rem;font-variant-numeric:tabular-nums;white-space:nowrap;line-height:1.2}
+.fxm b small{font-family:var(--body);font-weight:400;font-size:.74rem;color:var(--muted)}
+.fxm b em{font-family:var(--body);font-style:normal;font-weight:400;font-size:.72rem;color:var(--muted);margin-left:6px}
+.fxm b.na{font-family:var(--body);font-weight:400;font-size:.8rem;color:var(--muted);grid-column:1 / -1;grid-row:1}
+.fxm:has(b.na) .trk{display:none}
+.trk{position:relative;height:11px;border-radius:3px;background:var(--sunk);display:block;overflow:hidden}
+.trk.seg{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:2px;background:none}
+.trk.seg i{background:var(--sunk);border-radius:2px}
+.trk.seg i.on{background:var(--accent)}
+.trk .fill{position:absolute;inset:0 auto 0 0;border-radius:3px;background:var(--accent)}
+.trk .fill.z2{background:color-mix(in srgb,var(--accent) 60%,var(--surface))}
+.trk .fill.z3{background:color-mix(in srgb,var(--accent) 32%,var(--surface))}
+.trk .fill.few{background-image:repeating-linear-gradient(135deg,transparent 0 4px,color-mix(in srgb,var(--surface) 55%,transparent) 4px 7px)}
+.trk .t7{position:absolute;top:0;bottom:0;left:70%;width:2px;background:var(--ink);opacity:.55}
+@media (max-width:760px){
+  .fxhead{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2px 14px}
+  .fxhead>span:first-child{display:none}
+  .fxb{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2px 14px;padding:5px 0}
+  .fxb .nm{grid-column:1 / -1;font-size:.86rem}
+  .fxm,.fxm:last-child{grid-template-columns:minmax(0,1fr) auto;gap:6px}
+  .fxm b{font-size:.86rem}
+  .fxm b em{display:none}
+}
 @media (max-width:640px){.fxt .fn{display:none}.fxhint{display:block}.fxsum{padding:14px}.fxwrap{margin:0 -14px;padding:0 14px}.fxt th{min-width:48px;font-size:.72rem}.fxc{height:34px}}
 </style>
 </head>
@@ -1313,18 +1395,92 @@ function fxCell(c, t, k){
   const txt = !n ? "–" : n.statut === "D" ? "déjà" : s === null ? "vague" : fmt(s);
   return `<a class="fxc ${cls}" href="#theme-${t.id}-${k}-${c.id}" title="${esc(c.nom)} · ${esc(q)} : ${esc(mot)}${s !== null ? `, ${fmt(s)}/10` : ""}" aria-label="${esc(c.nom)}, ${esc(q)} : ${esc(mot)}${s !== null ? `, ${fmt(s)} sur 10` : ""}">${txt}</a>`;
 }
+const FXORDRE = ["f", "d", "i", "z", "v", "x", "u"];
+function fxKind(c, t, k){
+  const p = POSITIONS[c.id]?.[t.id]?.[k], n = NOTES[c.id]?.[t.id]?.[k];
+  if (!p || isUnk(p) || !n) return "u";
+  const s = noteSur10(n), mot = noteMot(n);
+  return n.statut === "D" ? "x" : s === null ? "v" : mot === "Faisable" ? "f" : mot === "Difficile" ? "d" : s === 0 ? "z" : "i";
+}
+const plur = (n, a, b) => `${n} ${n > 1 ? b : a}`;
+function fxSynthese(c, t, done){
+  const q = (k) => COURT[t.id]?.[k] || saShort(t.sa[k]);
+  const K = done.map(k => ({k, kind: fxKind(c, t, k), s: noteSur10(NOTES[c.id]?.[t.id]?.[k])}));
+  const cnt = (x) => K.filter(e => e.kind === x).length;
+  const notees = K.filter(e => ["f", "d", "i", "z"].includes(e.kind));
+  const parts = [[cnt("f"), "faisable", "faisables"], [cnt("d"), "difficile", "difficiles"], [cnt("i"), "très improbable", "très improbables"], [cnt("z"), "impossible", "impossibles"],
+    [cnt("v"), "trop vague", "trop vagues"], [cnt("x"), "déjà décidée", "déjà décidées"]].filter(x => x[0]).map(x => plur(...x));
+  const sans = cnt("u");
+  let txt = parts.length ? `<b>${parts.join(", ")}</b>` : "";
+  txt += sans ? `${txt ? " · " : ""}${sans === done.length ? "Aucune position connue sur ce thème" : `pas de position connue sur ${sans} question${sans > 1 ? "s" : ""}`}` : "";
+  if (notees.length >= 2) {
+    const hi = Math.max(...notees.map(e => e.s)), lo = Math.min(...notees.map(e => e.s));
+    if (hi !== lo) {
+      const nom = (v) => notees.filter(e => e.s === v).map(e => q(e.k).toLowerCase()).join(", ");
+      txt += `. Le plus solide : ${esc(nom(hi))} (${fmt(hi)}/10). Le plus fragile : ${esc(nom(lo))} (${fmt(lo)}/10).`;
+    } else txt += `. Toutes ses positions notées sont à ${fmt(hi)}/10.`;
+  } else if (notees.length === 1) txt += `. Une seule position notée : ${esc(q(notees[0].k).toLowerCase())} (${fmt(notees[0].s)}/10).`;
+  else if (txt) txt += ".";
+  return txt;
+}
+/* Tri propre au récap : aléatoire par défaut, comme le reste du site */
+let fxSort = "random";
+function fxStats(c, t, done){
+  const K = done.map(k => fxKind(c, t, k)), known = K.filter(x => x !== "u").length;
+  const s = done.filter((k, i) => ["f", "d", "i", "z"].includes(K[i])).map(k => noteSur10(NOTES[c.id][t.id][k]));
+  return {known, n: s.length, mean: s.length ? Math.round(s.reduce((a, b) => a + b, 0) / s.length * 10) / 10 : null};
+}
+function fxOrder(t, done){
+  if (fxSort === "alpha") return byName;
+  if (fxSort === "random") return shuffled;
+  const st = Object.fromEntries(CANDIDATS.map(c => [c.id, fxStats(c, t, done)])), nm = (a, b) => sortKey(a).localeCompare(sortKey(b), "fr");
+  const mean = (c) => st[c.id].mean ?? -1;
+  return CANDIDATS.slice().sort(fxSort === "cov"
+    ? (a, b) => st[b.id].known - st[a.id].known || mean(b) - mean(a) || nm(a, b)
+    : (a, b) => mean(b) - mean(a) || st[b.id].n - st[a.id].n || nm(a, b));
+}
+const fxSortBar = () => `<div class="toolbar fxsort" role="group" aria-label="Trier le récap"><span class="muted">Trier par</span><div class="seg">${[["alpha", "Alphabétique"], ["cov", "Sujets couverts"], ["fea", "Faisabilité"], ["random", "Aléatoire"]].map(([k, l]) => `<button class="btn" data-fxsort="${k}" aria-pressed="${fxSort === k}">${l}</button>`).join("")}</div></div>`;
+
+/* Deux barres par candidat : sujets couverts (sur le nombre de questions) et faisabilité moyenne des positions notées (sur 10) */
+function fxBarsHTML(t, done){
+  const nq = done.length;
+  const rows = fxOrder(t, done).map(c => {
+    const K = done.map(k => fxKind(c, t, k)), known = K.filter(x => x !== "u").length;
+    const s = done.filter((k, i) => ["f", "d", "i", "z"].includes(K[i])).map(k => noteSur10(NOTES[c.id][t.id][k]));
+    const mean = s.length ? Math.round(s.reduce((a, b) => a + b, 0) / s.length * 10) / 10 : null, few = s.length > 0 && s.length < 3;
+    const z = mean === null ? "" : mean >= 7 ? "z1" : mean >= 4 ? "z2" : "z3";
+    const cov = `<div class="fxm"><span class="fxl">Sujets couverts</span><span class="trk seg" style="--n:${nq}">${done.map((k, i) => `<i${i < known ? ' class="on"' : ""}></i>`).join("")}</span><b>${known}<small>/${nq}</small></b></div>`;
+    const fea = mean === null
+      ? `<div class="fxm"><span class="fxl">Faisabilité moyenne</span><span class="trk"></span><b class="na">Aucune position notée</b></div>`
+      : `<div class="fxm" title="Moyenne sur ${s.length} position${s.length > 1 ? "s" : ""} notée${s.length > 1 ? "s" : ""}${few ? " : à lire avec prudence" : ""}"><span class="fxl">Faisabilité moyenne</span><span class="trk"><i class="fill ${z}${few ? " few" : ""}" style="width:${mean * 10}%"></i><i class="t7"></i></span><b>${fmt(mean)}<small>/10</small><em>${s.length} notée${s.length > 1 ? "s" : ""}</em></b></div>`;
+    return `<li class="fxb"><a class="nm" href="#candidat-${c.id}" title="${esc(c.nom)} (${esc(c.parti)})">${esc(c.nom)}</a>${cov}${fea}</li>`; }).join("");
+  return `<div class="fxbars"><div class="fxhead" aria-hidden="true"><span></span><span>Sujets couverts <small>(sur ${nq})</small></span><span>Faisabilité moyenne <small>(sur 10, positions notées)</small></span></div><ul>${rows}</ul>
+    <p class="fxnone">Le trait vertical marque 7 sur 10, seuil à partir duquel une position est « faisable ». Barre hachurée : moyenne sur 1 ou 2 positions seulement, à lire avec prudence.</p></div>`;
+}
+
 function fxSummaryHTML(t, done){
   if (!done.length || !CANDIDATS.some(c => done.some(k => NOTES[c.id]?.[t.id]?.[k]))) return "";
+  const rowsR = fxOrder(t, done).map(c => {
+    const segs = done.map(k => ({k, kind: fxKind(c, t, k)})).sort((a, b) => FXORDRE.indexOf(a.kind) - FXORDRE.indexOf(b.kind) || noteSur10(NOTES[c.id]?.[t.id]?.[b.k]) - noteSur10(NOTES[c.id]?.[t.id]?.[a.k]));
+    const bar = segs.map(({k}) => fxCell(c, t, k).replace('class="fxc ', 'class="fxc fxs ').replace(/>[^<]*<\/a>$/, ">" + (() => { const s = noteSur10(NOTES[c.id]?.[t.id]?.[k]); return ["f","d","i","z"].includes(fxKind(c, t, k)) ? fmt(s) : ""; })() + "</a>")).join("");
+    return `<li class="fxr"><a class="nm" href="#candidat-${c.id}">${esc(c.nom)}<small>${esc(c.parti)}</small></a><div class="fxbar">${bar}</div><p class="fxsyn">${fxSynthese(c, t, done)}</p></li>`; }).join("");
   const head = done.map(k => `<th scope="col"><a href="#theme-${t.id}-${k}">${esc(COURT[t.id]?.[k] || saShort(t.sa[k]))}</a></th>`).join("");
-  const rows = list().map(c => `<tr${c.id === focusC ? ' class="focus"' : ""}><th scope="row"><a href="#candidat-${c.id}" aria-label="${esc(c.nom)}">${c.nom.includes(" ") ? `<span class="fn">${esc(c.nom.slice(0, c.nom.indexOf(" ")))} </span>${esc(c.nom.slice(c.nom.indexOf(" ") + 1))}` : esc(c.nom)}</a></th>${done.map(k => `<td>${fxCell(c, t, k)}</td>`).join("")}</tr>`).join("");
-  return `<section class="fxsum" aria-labelledby="h-fxsum">
-    <h2 id="h-fxsum">En un coup d'œil : la faisabilité de chaque programme</h2>
-    <p class="muted">Note sur 10 de la position principale de chaque candidat, question par question. Plus la case est foncée, plus la position est faisable. Touchez une case pour lire le détail. Ce n'est pas un classement : la note ne juge ni l'ambition ni le bien-fondé d'une position.</p>
-    <p class="muted fxhint">Faites défiler la grille vers la droite pour voir toutes les questions.</p>
-    <div class="fxwrap"><table class="fxt"><thead><tr><td></td>${head}</tr></thead><tbody>${rows}</tbody></table></div>
+  const rows = fxOrder(t, done).map(c => `<tr${c.id === focusC ? ' class="focus"' : ""}><th scope="row"><a href="#candidat-${c.id}" aria-label="${esc(c.nom)}">${c.nom.includes(" ") ? `<span class="fn">${esc(c.nom.slice(0, c.nom.indexOf(" ")))} </span>${esc(c.nom.slice(c.nom.indexOf(" ") + 1))}` : esc(c.nom)}</a></th>${done.map(k => `<td>${fxCell(c, t, k)}</td>`).join("")}</tr>`).join("");
+  return `<section class="fxsum" aria-labelledby="h-fxsum" data-t="${t.id}">
+    <div class="fxtop"><h2 id="h-fxsum">En un coup d'œil : la faisabilité de chaque programme</h2>${fxSortBar()}</div>
+    <p class="muted">Pour chaque candidat : à gauche, combien de sujets du thème il couvre ; à droite, la faisabilité moyenne de ses positions notées. Touchez un nom pour voir le candidat. Ce n'est pas un classement : la note ne juge ni l'ambition ni le bien-fondé d'une position.</p>
+    ${fxBarsHTML(t, done)}
+    <details class="fxmore"><summary>Voir le détail par candidat</summary>
+    <p class="muted" style="font-size:.86rem;margin-bottom:8px">Les ${done.length} positions de chaque candidat, de la plus faisable à la moins faisable. Plus la case est foncée, plus la position est faisable.</p>
+    <ul class="fxrows">${rowsR}</ul>
     <ul class="fxleg" aria-label="Légende">
       <li><span class="fxc f">8</span>Faisable (7 à 10)</li><li><span class="fxc d">5</span>Difficile</li><li><span class="fxc i">3</span>Très improbable</li><li><span class="fxc z">0</span>Impossible</li>
       <li><span class="fxc v">vague</span>Trop vague pour être notée</li><li><span class="fxc x">déjà</span>Déjà décidée</li><li><span class="fxc u">–</span>Pas de position connue</li></ul>
+    </details>
+    <details class="fxmore"><summary>Voir le détail question par question</summary>
+      <p class="muted fxhint">Faites défiler la grille vers la droite pour voir toutes les questions.</p>
+      <div class="fxwrap"><table class="fxt"><thead><tr><td></td>${head}</tr></thead><tbody>${rows}</tbody></table></div>
+    </details>
   </section>`;
 }
 
@@ -1543,6 +1699,11 @@ function render(){
 
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") document.querySelectorAll(".cards").forEach(g => { if (g.querySelector(".detail")) { const c = g.querySelector(".card.sel .card-btn"); closePanel(g); c?.focus(); } }); });
 document.addEventListener("click", (e) => {
+  const fs = e.target.closest("[data-fxsort]");
+  if (fs) { const sec = fs.closest(".fxsum"), t = theme(sec.dataset.t), openD = [...sec.querySelectorAll("details")].map(d => d.open);
+    fxSort = fs.dataset.fxsort; sec.outerHTML = fxSummaryHTML(t, answered(t));
+    const n = document.querySelector(".fxsum"); n.querySelectorAll("details").forEach((d, i) => { if (openD[i]) d.open = true; });
+    n.querySelector(`[data-fxsort="${fxSort}"]`)?.focus(); return; }
   const f = e.target.closest("[data-fold]");
   if (f) { const grid = f.closest(".cards"), card = grid.querySelector(".card.sel"); closePanel(grid); if (card) { card.querySelector(".card-btn").focus(); card.scrollIntoView({block: "nearest"}); } return; }
   const o = e.target.closest("[data-open]");
