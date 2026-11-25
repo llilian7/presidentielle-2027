@@ -257,6 +257,73 @@ table.matrix{border-collapse:collapse;font-size:.84rem;min-width:900px;width:100
 .chead .mono{width:64px;height:64px;font-size:1.2rem}
 .chead>div{display:grid;gap:4px;min-width:0}
 .ccards{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));align-items:start}
+/* Page candidat : thèmes et questions repliables */
+.ctools{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;margin-top:8px}
+.ctools h2{font-size:1.2rem}
+.tsec{scroll-margin-top:calc(var(--tb,64px) + 12px)}
+.crows{display:grid;gap:8px}
+details.crow{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);scroll-margin-top:calc(var(--tb,64px) + 12px);min-width:0}
+details.crow>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px 14px;align-items:center;padding:12px 14px 12px 18px;border-radius:var(--r)}
+details.crow>summary::-webkit-details-marker{display:none}
+details.crow>summary:hover{background:var(--sunk)}
+details.crow[open]>summary{border-bottom:1px solid var(--line);border-radius:var(--r) var(--r) 0 0}
+details.crow .chev{width:28px;height:28px}
+details.qsec details.crow:not([open]) .chev::before{transform:translateY(-2px) rotate(45deg)}
+details.crow[open] .chev::before{transform:translateY(2px) rotate(-135deg)}
+.crow-t{display:grid;gap:3px;min-width:0}
+.crow-t b{font-weight:700;line-height:1.35}
+.crow-s{display:flex;justify-content:flex-end;min-width:0}
+details.crow>.ccard{border:0;border-radius:0 0 var(--r) var(--r);background:transparent}
+details.crow.flash{box-shadow:0 0 0 3px var(--accent)}
+.cunk{margin:2px 0 0;font-size:.9rem}
+@media (max-width:640px){details.crow>summary{grid-template-columns:minmax(0,1fr) auto;padding:12px 10px 12px 14px}.crow-s{grid-column:1;grid-row:2;justify-content:flex-start}details.crow .chev{grid-column:2;grid-row:1/3}details.crow>.ccard{padding:14px}}
+/* Graphe radar de la page candidat */
+.radar{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;display:grid;gap:14px;margin:4px 0 8px;min-width:0;box-shadow:var(--shadow)}
+.rhead{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:flex-end;justify-content:space-between}
+.rhead h2{margin:2px 0 0;font-size:1.2rem}
+.rtabs{flex-wrap:wrap}
+.rbody{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:8px 24px;align-items:start}
+.rfig{margin:0;display:grid;gap:8px;min-width:0}
+.rsvg{width:100%;height:auto;display:block;max-width:460px;margin:0 auto;overflow:visible}
+.rsvg .rg{fill:none;stroke:var(--line);stroke-width:1}
+.rsvg .rg.out{stroke:var(--muted);stroke-opacity:.45}
+.rsvg .rs{stroke:var(--line);stroke-width:1}
+.rsvg .rt{fill:var(--muted);font:600 10px var(--body)}
+.rsvg .rl{fill:var(--ink);font:600 12.5px var(--body)}
+.rsvg .rl.nul{fill:var(--muted);font-weight:400}
+.rsvg .rme{fill:var(--accent);fill-opacity:.16;stroke:var(--accent);stroke-width:2;stroke-linejoin:round}
+.rsvg .ravg{fill:none;stroke:var(--muted);stroke-width:1.5;stroke-dasharray:4 4;stroke-linejoin:round}
+.rsvg .dot{fill:var(--accent);stroke:var(--surface);stroke-width:2}
+.rsvg .nul .dot{fill:var(--surface);stroke:var(--muted);stroke-width:1.5}
+.rsvg .hit{fill:transparent}
+.rsvg .rp:hover .dot{r:6}
+.rleg{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:.82rem;color:var(--muted)}
+.rleg span{display:inline-flex;align-items:center;gap:6px}
+.rleg i{display:inline-block;width:18px;height:0;border-top:2px solid var(--accent)}
+.rleg i.lavg{border-top:2px dashed var(--muted)}
+.rleg i.lnul{width:9px;height:9px;border:1.5px solid var(--muted);border-radius:50%}
+.rside{display:grid;gap:8px;min-width:0;align-content:start}
+.rsyn{margin:0;line-height:1.5}
+.rcount{margin:0;font-size:.85rem}
+.rlist{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:2px}
+.rgo{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:minmax(0,9.5em) minmax(40px,1fr) auto;gap:10px;align-items:center;padding:6px 8px;border-radius:var(--r-sm);cursor:pointer;font-size:.9rem}
+.rgo:hover:not(:disabled){background:var(--sunk)}
+.rgo:disabled{cursor:default}
+.rgo:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.rq{overflow-wrap:anywhere;line-height:1.25}
+.rbar{position:relative;height:6px;border-radius:3px;background:var(--sunk)}
+.rbar i{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--accent)}
+.rbar b{position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;background:var(--muted);border-radius:1px}
+.rv{font-size:.82rem;color:var(--muted);text-align:right;white-space:nowrap}
+.rv b{color:var(--ink);font-size:.95rem}
+.rlist .nul .rq{color:var(--muted)}
+.rnote{margin:0;font-size:.82rem}
+.rfew{margin:24px 0;text-align:center}
+.ccard{scroll-margin-top:calc(var(--tb,64px) + 12px);transition:box-shadow .3s}
+.ccard.flash{box-shadow:0 0 0 3px var(--accent)}
+@media (max-width:860px){.rbody{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){.radar{padding:16px 14px}.rsvg .rl{font-size:13.5px}.rgo{grid-template-columns:minmax(0,8em) minmax(30px,1fr) auto;gap:8px;padding:6px 4px}.rtabs .btn{flex:1 1 auto}}
+@media (prefers-reduced-motion:reduce){.ccard{transition:none}}
 .ccard{display:grid;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;min-width:0}
 .ccard .top{display:grid;gap:4px}
 .ccard .rep-line{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--accent-soft);border-radius:var(--r-sm)}
@@ -1562,23 +1629,109 @@ function themeView(t){
   ${footer()}`;
 }
 
+/* ===== Graphe radar (Kiviat) en haut de la page candidat ===== */
+/* Une branche par question comparée du thème ; la valeur est la note de faisabilité sur 10 de sa position principale.
+   Les questions sans note (pas de position, trop vague, non notée) sont placées au centre et signalées par un rond vide. */
+let radarT = null;
+/* Thèmes et questions dépliés sur la page candidat : mémorisés pendant la visite */
+const openC = new Set();
+const RKIND = {f: "Faisable", d: "Difficile", i: "Très improbable", z: "Impossible", v: "Trop vague", x: "Déjà décidée", n: "Non notée", o: "Position ancienne", u: "Position inconnue", w: "À venir", nn: "Aucune note"};
+function radarData(c, t){
+  const qs = answered(t);
+  return qs.map(k => {
+    const kind = fxKind(c, t, k), n = NOTES[c.id]?.[t.id]?.[k];
+    const s = ["f", "d", "i", "z"].includes(kind) ? noteSur10(n) : null;
+    const oth = CANDIDATS.filter(x => x !== c).map(x => ["f", "d", "i", "z"].includes(fxKind(x, t, k)) ? noteSur10(NOTES[x.id][t.id][k]) : null).filter(v => v !== null);
+    return {k, id: `q-${t.id}-${k}`, lab: COURT[t.id]?.[k] || saShort(t.sa[k]), kind, s, avg: oth.length ? oth.reduce((a, b) => a + b, 0) / oth.length : null};
+  });
+}
+function radarAll(c, themes){
+  return themes.map(t => { if (!answered(t).length) return {k: t.id, id: null, lab: t.nom, kind: "w", s: null, avg: null};
+    const K = answered(t).map(k => fxKind(c, t, k)).filter(x => ["f", "d", "i", "z"].includes(x)).length;
+    const vals = answered(t).filter(k => ["f", "d", "i", "z"].includes(fxKind(c, t, k))).map(k => noteSur10(NOTES[c.id][t.id][k]));
+    const oth = CANDIDATS.filter(x => x !== c).map(x => { const v = answered(t).filter(k => ["f", "d", "i", "z"].includes(fxKind(x, t, k))).map(k => noteSur10(NOTES[x.id][t.id][k])); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null; }).filter(v => v !== null);
+    return {k: t.id, id: `h-${t.id}`, lab: t.nom, kind: vals.length ? "m" : "nn", s: vals.length ? Math.round(vals.reduce((a, b) => a + b, 0) / vals.length * 10) / 10 : null, avg: oth.length ? oth.reduce((a, b) => a + b, 0) / oth.length : null, sub: `${K} notée${K > 1 ? "s" : ""} sur ${answered(t).length}`}; });
+}
+/* coupe un intitulé en deux lignes au plus */
+function radarLines(s){
+  if (s.length <= 12) return [s];
+  const w = s.split(" "); let best = null;
+  for (let i = 1; i < w.length; i++) { const a = w.slice(0, i).join(" "), b = w.slice(i).join(" "), m = Math.max(a.length, b.length); if (!best || m < best[2]) best = [a, b, m]; }
+  return best ? [best[0], best[1]] : [s];
+}
+function radarSVG(D, nom){
+  const W = 420, H = 380, cx = W / 2, cy = H / 2, R = 118, n = D.length;
+  const ang = (i) => -Math.PI / 2 + i * 2 * Math.PI / n, pt = (i, v) => [cx + Math.cos(ang(i)) * R * v / 10, cy + Math.sin(ang(i)) * R * v / 10];
+  const f = (x) => x.toFixed(1), poly = (vals) => vals.map((v, i) => pt(i, v ?? 0).map(f).join(",")).join(" ");
+  const rings = [2.5, 5, 7.5, 10].map(v => `<polygon class="rg${v === 10 ? " out" : ""}" points="${poly(D.map(() => v))}"/>`).join("");
+  const spokes = D.map((d, i) => { const [x, y] = pt(i, 10); return `<line class="rs" x1="${cx}" y1="${cy}" x2="${f(x)}" y2="${f(y)}"/>`; }).join("");
+  const ticks = [5, 10].map(v => `<text class="rt" x="${cx + 4}" y="${f(cy - R * v / 10 + 11)}">${v}</text>`).join("");
+  const hasAvg = D.some(d => d.avg !== null);
+  const avg = hasAvg ? `<polygon class="ravg" points="${poly(D.map(d => d.avg))}"/>` : "";
+  const me = `<polygon class="rme" points="${poly(D.map(d => d.s))}"/>`;
+  const dots = D.map((d, i) => { const [x, y] = pt(i, d.s ?? 0), tip = `${d.lab} : ${d.s !== null ? fmt(d.s) + "/10" : RKIND[d.kind] || "Non noté"}${d.avg !== null ? ` · moyenne des autres ${fmt(Math.round(d.avg * 10) / 10)}/10` : ""}`;
+    return `<g class="rp${d.s === null ? " nul" : ""}"><title>${esc(tip)}</title><circle class="hit" cx="${f(x)}" cy="${f(y)}" r="12"/><circle class="dot" cx="${f(x)}" cy="${f(y)}" r="${d.s === null ? 3.5 : 4.5}"/></g>`; }).join("");
+  const labels = D.map((d, i) => { const a = ang(i), cs = Math.cos(a), sn = Math.sin(a), x = cx + cs * (R + 14), y = cy + sn * (R + 14);
+    const anchor = Math.abs(cs) < 0.2 ? "middle" : cs > 0 ? "start" : "end", L = radarLines(d.lab), lh = 13.5;
+    const y0 = y + (sn > 0.5 ? 9 : sn < -0.5 ? -(L.length - 1) * lh - 2 : 4 - (L.length - 1) * lh / 2);
+    return `<text class="rl${d.s === null ? " nul" : ""}" x="${f(x)}" y="${f(y0)}" text-anchor="${anchor}">${L.map((l, j) => `<tspan x="${f(x)}" dy="${j ? lh : 0}">${esc(l)}</tspan>`).join("")}</text>`; }).join("");
+  return `<svg class="rsvg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Graphe radar de la faisabilité des positions de ${esc(nom)}, de 0 au centre à 10 au bord. Le détail est dans la liste à côté."><g aria-hidden="true">${rings}${spokes}${avg}${me}${dots}${labels}${ticks}</g></svg>`;
+}
+function radarHTML(c, themes){
+  if (!themes.length) return "";
+  if (!radarT || (radarT !== "all" && !themes.some(t => t.id === radarT))) radarT = themes.length >= 3 ? "all" : themes.map(x => [x, radarData(c, x).filter(d => d.s !== null).length]).sort((a, b) => b[1] - a[1])[0][0].id;
+  const t = radarT === "all" ? null : theme(radarT), D = t ? radarData(c, t) : radarAll(c, THEMES);
+  const tabs = `<div class="seg rtabs" role="group" aria-label="Thème du graphe">${[["all", "Tous les thèmes"]].concat(themes.map(x => [x.id, x.nom])).map(([id, l]) => `<button class="btn" data-radar="${id}" aria-pressed="${radarT === id}">${esc(l)}</button>`).join("")}</div>`;
+  const nNot = D.filter(d => d.s !== null).length;
+  const chart = !nNot ? `<p class="muted rfew">Aucune de ses positions n'est notée sur ce thème pour l'instant : pas de graphe à tracer.</p>` : D.length >= 3 ? radarSVG(D, c.nom) : `<p class="muted rfew">Le graphe apparaîtra dès que trois questions de ce thème seront comparées.</p>`;
+  const sorted = D.slice().sort((a, b) => (b.s ?? -1) - (a.s ?? -1));
+  const items = sorted.map(d => `<li${d.s === null ? ' class="nul"' : ""}><button class="rgo" ${d.id ? `data-rgo="${d.id}"` : "disabled"}><span class="rq">${esc(d.lab)}</span><span class="rbar" aria-hidden="true"><i style="width:${(d.s ?? 0) * 10}%"></i>${d.avg !== null ? `<b style="left:${f2(d.avg * 10)}%"></b>` : ""}</span><span class="rv">${d.s !== null ? `<b>${fmt(d.s)}</b>/10` : esc(RKIND[d.kind] || "Non noté")}</span></button></li>`).join("");
+  const nCmp = D.filter(d => d.kind !== "w").length;
+  const syn = t ? fxSynthese(c, t, answered(t)) : `Moyenne de faisabilité de ses positions notées, thème par thème. <b>${nCmp} thème${nCmp > 1 ? "s" : ""} comparé${nCmp > 1 ? "s" : ""} sur ${D.length}</b> pour l'instant : les autres sont au centre en attendant, et le graphe se remplit au fur et à mesure.`;
+  return `<section class="radar" aria-labelledby="h-radar">
+    <div class="rhead"><div><span class="eyebrow">En un coup d'œil</span><h2 id="h-radar">Faisabilité de ses positions${t ? ` · ${esc(t.nom)}` : ""}</h2></div>${tabs}</div>
+    <div class="rbody">
+      <figure class="rfig">${chart}
+        ${nNot ? `<figcaption class="rleg"><span><i class="lme"></i>${esc(c.nom)}</span>${D.some(d => d.avg !== null) ? `<span><i class="lavg"></i>Moyenne des autres candidats</span>` : ""}<span><i class="lnul"></i>Sans note (placé au centre)</span></figcaption>` : ""}
+      </figure>
+      <div class="rside"><p class="rsyn">${syn}</p>
+        <p class="muted rcount">${nNot} ${t ? "question" : "thème"}${nNot > 1 ? "s" : ""} noté${t ? "e" : ""}${nNot > 1 ? "s" : ""} sur ${D.length}, de 0 au centre à 10 au bord.${D.some(d => d.avg !== null) ? " Le petit trait sur chaque barre : la moyenne des autres candidats." : ""}</p>
+        <ol class="rlist">${items}</ol></div>
+    </div>
+    <p class="muted rnote">Le graphe mesure la faisabilité, pas une orientation politique : une branche courte veut dire une position difficile à mettre en œuvre, trop vague ou inconnue.</p>
+  </section>`;
+}
+const f2 = (x) => Math.max(0, Math.min(100, x)).toFixed(1);
+
 function candView(c){
   const l = list(), i = l.indexOf(c), prev = l[(i - 1 + l.length) % l.length], next = l[(i + 1) % l.length];
   const side = `<nav class="side" aria-label="Candidats"><p class="side-h">Candidats</p><ul>${l.map(x => `<li><a href="#candidat-${x.id}"${x===c?' aria-current="page"':""}><span>${esc(x.nom)}</span></a></li>`).join("")}</ul></nav>`;
   const mnav = l.map(x => `<a class="chip${x===c?" on":""}" href="#candidat-${x.id}">${esc(x.nom)}</a>`).join("");
   const withPos = THEMES.filter(t => answered(t).some(k => POSITIONS[c.id]?.[t.id]?.[k]));
   const nAns = THEMES.reduce((a, t) => a + answered(t).filter(k => POSITIONS[c.id]?.[t.id]?.[k]).length, 0);
-  const sections = withPos.map(t => `
-    <section class="hsec" aria-labelledby="h-${t.id}">
-      <div class="phead"><div><h2 id="h-${t.id}">${esc(t.nom)}</h2></div><a class="btn" href="#theme-${t.id}">Comparer avec les autres →</a></div>
-      <div class="ccards">${answered(t).filter(k => POSITIONS[c.id]?.[t.id]?.[k]).map(k => { const p = POSITIONS[c.id][t.id][k];
-        return `<article class="ccard">
-          <div class="top"><span class="eyebrow">${esc(saShort(t.sa[k]))}</span><h3>${esc(qText(t, k))}</h3></div>
-          <div class="rep-line"><p>${esc(p.reponse || "")}</p></div>
-          ${answerBody(c, t, k, p)}
-          <a class="qlink" href="#theme-${t.id}-${k}-${c.id}">Comparer cette réponse avec les autres candidats →</a>
-        </article>`; }).join("")}</div>
-    </section>`).join("");
+  /* Thèmes repliables, puis une ligne repliable par question : la réponse et la note d'abord, le détail au clic */
+  const sections = withPos.map(t => {
+    const ks = answered(t).filter(k => POSITIONS[c.id]?.[t.id]?.[k]), known = ks.filter(k => !noPos(POSITIONS[c.id][t.id][k])), unk = ks.filter(k => noPos(POSITIONS[c.id][t.id][k]));
+    const st = fxStats(c, t, answered(t)), sc = known.map(k => scoreOf(c.id, t.id, k)).filter(v => v !== null && v !== undefined);
+    const moy = sc.length ? Math.round(sc.reduce((a, b) => a + b, 0) / sc.length * 10) / 10 : null;
+    const meta = [`${plur(known.length, "réponse connue", "réponses connues")} sur ${answered(t).length}`, sc.length ? `${plur(sc.length, "notée", "notées")}${moy !== null ? ` · moyenne ${fmt(moy)}/10` : ""}` : ""].filter(Boolean).join(" · ");
+    return `
+    <details class="qsec tsec" id="h-${t.id}" data-ct="${t.id}"${openC.has(t.id) ? " open" : ""}>
+      <summary><span class="qsum-t"><span class="eyebrow">Thème</span><h2>${esc(t.nom)}</h2><span class="qmeta">${meta}</span></span><span class="chev" aria-hidden="true"></span></summary>
+      <div class="qbody">
+        <div class="crows">${known.map(k => { const p = POSITIONS[c.id][t.id][k], id = `${t.id}-${k}`;
+          return `<details class="crow" id="q-${id}" data-ck="${id}"${openC.has(id) ? " open" : ""}>
+            <summary><span class="crow-t"><span class="eyebrow">${esc(COURT[t.id]?.[k] || saShort(t.sa[k]))}</span><b>${esc(p.reponse || "")}</b></span><span class="crow-s">${scoreBadgeS(NOTES[c.id]?.[t.id]?.[k])}</span><span class="chev" aria-hidden="true"></span></summary>
+            <article class="ccard">
+              <div class="top"><span class="eyebrow">${esc(saShort(t.sa[k]))}</span><h3>${esc(qText(t, k))}</h3></div>
+              ${answerBody(c, t, k, p)}
+              <a class="qlink" href="#theme-${t.id}-${k}-${c.id}">Comparer cette réponse avec les autres candidats →</a>
+            </article>
+          </details>`; }).join("")}</div>
+        ${unk.length ? `<p class="cunk"><span class="muted">Pas de position connue :</span> ${unk.map(k => `<a href="#theme-${t.id}-${k}">${esc(COURT[t.id]?.[k] || saShort(t.sa[k]))}</a>`).join(", ")}</p>` : ""}
+        <div class="qfoot"><a class="btn" href="#theme-${t.id}">Comparer tout le thème avec les autres →</a></div>
+      </div>
+    </details>`; }).join("");
   const later = THEMES.filter(t => !withPos.includes(t));
   return `${topbar("cand")}
   <div class="shell">${side}
@@ -1587,7 +1740,9 @@ function candView(c){
       <div class="phead"><div class="chead"><span class="mono" aria-hidden="true">${initials(c.nom)}</span>
         <div><span class="eyebrow">${esc(c.statut)}</span><h1>${esc(c.nom)}</h1><p class="muted">${esc(c.parti)} · ${nAns} réponse${nAns > 1 ? "s" : ""} sur ${totalAnswered()} question${totalAnswered() > 1 ? "s" : ""} comparée${totalAnswered() > 1 ? "s" : ""}</p></div></div>
         ${orderToggle()}</div>
-      ${sections}
+      ${radarHTML(c, withPos)}
+      ${withPos.length ? `<div class="ctools"><h2>Ses réponses, thème par thème</h2><button class="btn" data-allc>${withPos.every(t => openC.has(t.id)) ? "Tout replier" : "Tout déplier"}</button></div>` : ""}
+      <div class="qlist">${sections}</div>
       ${later.length ? `<section class="hsec" aria-labelledby="h-later"><h2 id="h-later">Thèmes à venir</h2>
         <div class="later">${later.map(t => `<span>${esc(t.nom)}</span>`).join("")}</div></section>` : ""}
       ${withPos.length ? `<p><a class="btn" href="#comparer-${withPos[0].id}/${c.id}">Comparer avec d'autres candidats →</a></p>` : ""}
@@ -1755,6 +1910,13 @@ document.addEventListener("click", (e) => {
   const sh = e.target.closest("[data-share]");
   if (sh) { shareLink(sh.dataset.share, sh.dataset.title); return; }
   if (e.target.closest("[data-top]")) { window.scrollTo({top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}); return; }
+  const rb = e.target.closest("[data-radar]");
+  if (rb) { radarT = rb.dataset.radar; const sec = document.querySelector(".radar"), c = cand(location.hash.replace("#candidat-", ""));
+    if (sec && c) { sec.outerHTML = radarHTML(c, THEMES.filter(t => answered(t).some(k => POSITIONS[c.id]?.[t.id]?.[k]))); document.querySelector(`[data-radar="${radarT}"]`)?.focus(); } return; }
+  const rg = e.target.closest("[data-rgo]");
+  if (rg) { const el = document.getElementById(rg.dataset.rgo); if (el) { const ts = el.closest("details.tsec"); if (ts) ts.open = true; if (el.matches("details")) el.open = true; el.scrollIntoView({block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}); el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 1600); } return; }
+  const ac = e.target.closest("[data-allc]");
+  if (ac) { const all = [...document.querySelectorAll("details.tsec")], open = all.some(d => !d.open); all.forEach(d => d.open = open); ac.textContent = open ? "Tout replier" : "Tout déplier"; return; }
   const aq = e.target.closest("[data-allq]");
   if (aq) { const all = [...document.querySelectorAll("details.qsec")], open = all.some(d => !d.open); all.forEach(d => d.open = open); aq.textContent = open ? "Tout replier" : "Tout déplier"; return; }
   const b = e.target.closest("[data-order]");
@@ -1766,7 +1928,9 @@ document.addEventListener("click", (e) => {
 window.addEventListener("hashchange", render);
 /* Question dépliée ou repliée : mémorisée pendant la visite, et l'adresse suit pour pouvoir la partager */
 document.addEventListener("toggle", (e) => {
-  const d = e.target; if (!d.matches || !d.matches("details.qsec")) return;
+  const d = e.target;
+  if (d.matches && d.matches("details.tsec, details.crow")) { const id = d.dataset.ct || d.dataset.ck; if (d.open) openC.add(id); else openC.delete(id);
+    const ac = document.querySelector("[data-allc]"); if (ac && d.matches(".tsec")) ac.textContent = [...document.querySelectorAll("details.tsec")].every(x => x.open) ? "Tout replier" : "Tout déplier"; return; } if (!d.matches || !d.matches("details.qsec")) return;
   const q = d.dataset.q, own = "#theme-" + q;
   if (d.open) { openQ.add(q); if (location.hash !== own && !location.hash.startsWith(own + "-")) history.replaceState(null, "", own); }
   else { openQ.delete(q); if (location.hash === own || location.hash.startsWith(own + "-")) history.replaceState(null, "", "#theme-" + q.split("-")[0]); }
