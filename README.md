@@ -6,4 +6,4 @@ Site : https://llilian7.github.io/presidentielle-2027/
 
 `index.html` est généré à partir de la page source du projet avec `build.sh <accueil.html> .` (ajout de l'en-tête HTML complet).
 
-Thèmes publiés : Budget, Écologie, Économie, Santé, Social, Travail.
+Thèmes publiés : Budget, Écologie, Économie, Éducation, Immigration, Santé, Sécurité, Social, Société, Territoires, Travail.
